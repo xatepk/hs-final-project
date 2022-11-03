@@ -8,7 +8,7 @@ import NewsPage from './pages/NewsPage';
 
 function App() {
   return (
-    <>
+    <div className='page'>
     <Header />
     <Routes>
       <Route path='/' element={<MainPage />}></Route>
@@ -17,7 +17,7 @@ function App() {
       <Route path='/news/:id' element={<NewsDetailPage />}></Route>
     </Routes>
     <Footer />
-    </>
+    </div>
   );
 }
 

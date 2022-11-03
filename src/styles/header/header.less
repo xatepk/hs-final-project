@@ -1,0 +1,49 @@
+.header {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  &__items {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+
+    &>li.header__item:last-of-type {
+      margin-right: 40px;
+      margin-left: auto;
+    }
+
+    // &:l {
+    //   margin-left: auto;
+    // }
+  }
+
+  &__menu {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__item {
+    margin-right: 57px;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  &__item-link {
+    font-size: 14px;
+    line-height: 17px;
+    color: #8291A3;
+    text-decoration: none;
+  }
+
+}
