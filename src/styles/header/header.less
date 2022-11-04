@@ -1,14 +1,22 @@
 .header {
   margin: 0 auto;
   width: 100%;
-  max-width: 1280px;
+
+  &__nav {
+    width: 100%;
+    background-color: #F8F8F8;
+  }
 
   &__list {
+    margin: auto;
+    max-width: 1280px;
     list-style-type: none;
     padding: 0;
     display: flex;
     flex: 1;
     align-items: center;
+    padding-top: 11px;
+    padding-bottom: 11px;
   }
 
   &__items {
@@ -20,10 +28,6 @@
       margin-right: 40px;
       margin-left: auto;
     }
-
-    // &:l {
-    //   margin-left: auto;
-    // }
   }
 
   &__menu {
