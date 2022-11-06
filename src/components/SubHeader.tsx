@@ -6,7 +6,7 @@ function SubHeader() {
     <ul className="header__list subheader subheader__list">
       <li className="header__item subheader__item">
         <Link className="header__item-link subheader__item-link" to='/'>
-          <img src={logo} alt="логотип" className="subheader__logo" />
+          <img src={logo} alt="логотип" className="subheader__logo logo" />
         </Link>
       </li>
       <li className="header__item subheader__item">
