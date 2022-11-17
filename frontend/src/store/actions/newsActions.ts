@@ -8,6 +8,7 @@ export const fetchNews = () => {
     try {
       dispatch(newsSlice.actions.fetching);
       const response = await axios.get<INews[]>('news');
+      console.log(response.data);
       dispatch(newsSlice.actions.fetchSuccess(response.data));
 
     } catch (err) {

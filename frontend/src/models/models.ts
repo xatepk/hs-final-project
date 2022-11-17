@@ -1,5 +1,5 @@
 export interface INews {
-  date: Date,
+  date: string,
   _id: string,
   title: string,
   subtitle: string,
