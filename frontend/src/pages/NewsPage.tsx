@@ -1,26 +1,45 @@
 import { useEffect } from "react";
 import NewsCard from "../components/NewsCard";
-import { useAppDispatch, useAppSelector } from "../hook/redux";
+import Pagination from "../components/Pagination";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import usePagination from "../hooks/usePagination";
 import { fetchNews } from "../store/actions/newsActions";
 
 function NewsPage() {
   const dispatch = useAppDispatch();
-  const {error, loading, news} = useAppSelector(state => state.news);
+  const { error, loading, news } = useAppSelector(state => state.news);
+  const {
+    firstContentIndex,
+    lastContentIndex,
+    page,
+    gaps,
+    setPage,
+    totalPages,
+  } = usePagination({
+    contentPerPage: 9,
+    count: news.length,
+  });
 
   useEffect(() => {
     dispatch(fetchNews());
-}, [dispatch]);
+  }, [dispatch]);
 
 
   return (
-    <ul className="news">
+    <>
+      <ul className="news">
 
-      {
-        news.map((newsCard) => <NewsCard key={newsCard._id} newsCard = {newsCard} />)
-      }
+        {
+          news
+            .slice(firstContentIndex, lastContentIndex)
+            .map((newsCard) => <NewsCard key={newsCard._id} newsCard={newsCard} />)
+        }
 
-    </ul>
-   );
+      </ul>
+      <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} />
+    </>
+
+  );
 }
 
 export default NewsPage;
