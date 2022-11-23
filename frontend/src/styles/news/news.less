@@ -7,9 +7,16 @@
   gap: 30px;
   list-style-type: none;
 
+  &__card {
+    border-radius: 10px;
+    filter: drop-shadow(0px 20px 40px rgba(135, 124, 202, 0.15));
+  }
+
   &__image {
     width: 406px;
+    height: 226px;
     object-fit: cover;
+    border-radius: 10px;
   }
 
   &__title {
@@ -35,5 +42,35 @@
     height: 85px;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  &__date {
+    padding: 12px 8px;
+    background-color: #F8F8F8;
+    border-radius: 18px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8291A3;
+  }
+
+  &__button {
+    padding: 10px 15px;
+    background-color: rgba(102, 78, 249, 0.1);
+    border-radius: 17px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #664EF9;
+  }
+
+  &__bottom {
+    margin: 25px 20px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #F8F8F8;
   }
 }

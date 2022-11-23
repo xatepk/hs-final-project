@@ -6,3 +6,18 @@ export interface INews {
   description: string,
   image: string
 }
+
+export interface UsePaginationProps {
+  contentPerPage: number,
+  count: number,
+}
+
+export interface UsePaginationReturn {
+  page: number;
+  totalPages: number;
+  firstContentIndex: number;
+  lastContentIndex: number;
+  setPage: (page: number) => void;
+  gaps: { before: boolean; paginationGroup: number[]; after: boolean };
+}
+export type UsePagination = (arg0: UsePaginationProps) => (UsePaginationReturn);
