@@ -7,7 +7,10 @@ import { fetchNews } from "../store/actions/newsActions";
 
 function NewsPage() {
   const dispatch = useAppDispatch();
-  const { error, loading, news } = useAppSelector(state => state.news);
+  const { //error,
+    //loading,
+    news } = useAppSelector(state => state.news);
+
   const {
     firstContentIndex,
     lastContentIndex,
@@ -27,16 +30,15 @@ function NewsPage() {
 
   return (
     <>
-      <ul className="news">
+      {news.length > 0 && <ul className="news">
 
-        {
-          news
-            .slice(firstContentIndex, lastContentIndex)
-            .map((newsCard) => <NewsCard key={newsCard._id} newsCard={newsCard} />)
+        {news
+          .slice(firstContentIndex, lastContentIndex)
+          .map((newsCard) => <NewsCard key={newsCard._id} newsCard={newsCard} />)
         }
 
-      </ul>
-      <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} />
+      </ul>}
+      {news.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} />}
     </>
 
   );
