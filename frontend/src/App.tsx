@@ -3,7 +3,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import AuthPage from './pages/AuthPage';
 import MainPage from './pages/MainPage';
-import NewsDetailPage from './pages/NewsDetailPage';
+import NewsDetailPage from './pages/NewsDetailsPage';
 import NewsPage from './pages/NewsPage';
 
 function App() {

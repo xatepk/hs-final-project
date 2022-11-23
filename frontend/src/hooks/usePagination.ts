@@ -30,8 +30,6 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
     }
   }, [pageCount]);
 
-  // to set the pages between the gaps depending on position of current page
-  //and to setGaps Depending on position of current page
   useEffect(() => {
     const currentLocation = pagesInBetween.indexOf(page);
     let paginationGroup:number[] = [];
