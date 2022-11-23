@@ -1,4 +1,35 @@
 .pagination {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
   list-style-type: none;
   display: flex;
+
+  &__item {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #686868;
+    margin-right: 9px;
+
+    &:last-of-type{
+      margin-right: 0;
+    }
+
+    &_active {
+      font-weight: 700;
+      color: #000000;
+      border-bottom: 2px solid #FFD54F;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+
+  &__dotes {
+    color: #686868;
+    margin-right: 9px;
+  }
 }

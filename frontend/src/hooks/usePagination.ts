@@ -2,30 +2,30 @@ import { useState, useEffect } from "react";
 import { UsePagination } from "../models/models";
 
 interface Gap {
-  before: boolean;
+  before: number[];
   paginationGroup: number[];
-  after: boolean;
+  after: number[];
 }
 const usePagination: UsePagination = ({ contentPerPage, count }) => {
   const [page, setPage] = useState(1);
-  // like 3 dots that surrounds the immediate pages
+
   const [gaps, setGaps] = useState<Gap>({
-    before: false,
+    before: [],
     paginationGroup: [],
-    after: true,
+    after: [],
   });
-  // number of pages in total (total items / content on each page)
+  // определим количество страниц
   const pageCount = Math.ceil(count / contentPerPage);
-  // index of last item of current page
+  // индекс последнего элемента страницы
   const lastContentIndex = page * contentPerPage;
-  // index of first item of current page
+  // индекс первого элемента страницы
   const firstContentIndex = lastContentIndex - contentPerPage;
-  //Pages between the first and last pages
+  // страницы между первой и последней страницой
   const [pagesInBetween, setPagesInBetween] = useState<number[]>([]);
 
   useEffect(() => {
     if (pageCount > 2) {
-      const temp = new Array(pageCount - 2).fill(1).map((_, i) => i + 2);
+      const temp = new Array(pageCount).fill(1).map((_, i) => i + 1);
       setPagesInBetween(temp);
     }
   }, [pageCount]);
@@ -34,72 +34,38 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
   //and to setGaps Depending on position of current page
   useEffect(() => {
     const currentLocation = pagesInBetween.indexOf(page);
-    let paginationGroup = [];
-    let before = false;
-    let after = false;
-    if (page === 1) {
-      paginationGroup = pagesInBetween.slice(0, 3);
-    } else if (
-      page === pageCount ||
-      page === pageCount - 1 ||
-      page === pageCount - 2
-    ) {
-      paginationGroup = pagesInBetween.slice(-3, pageCount);
-    } else if (page === 2) {
-      paginationGroup = pagesInBetween.slice(
-        currentLocation,
-        currentLocation + 3
-      );
-    } else {
-      paginationGroup = [page - 1, page, page + 1];
-    }
-    if (pageCount <= 5) {
-      before = false;
-      after = false;
-    } else {
-      before = false;
-      after = false;
-      if (paginationGroup[0] > 2) {
-        before = true;
+    let paginationGroup:number[] = [];
+    let before:number[] = [];
+    let after:number[] = [];
+
+    if (pagesInBetween.length && pagesInBetween.length <= 10) {
+      before = pagesInBetween.slice(0, 1);
+      paginationGroup = pagesInBetween.slice(1, -1);
+      after = pagesInBetween.slice(-1);
+    } else if (currentLocation !== -1 && pagesInBetween.length > 10) {
+
+      if (currentLocation <= 5) {
+        before = pagesInBetween.slice(0, 1);
+        paginationGroup = pagesInBetween.slice(1, 7);
+        after = pagesInBetween.slice(7);
+
+      } else if (currentLocation >= (pagesInBetween.length - 5)) {
+        before = pagesInBetween.slice(0, pagesInBetween.length - 7);
+        paginationGroup = pagesInBetween.slice(pagesInBetween.length - 7, -1);
+        after = pagesInBetween.slice(-1);
+
+      } else {
+        before = pagesInBetween.slice(0, currentLocation - 3);
+        paginationGroup = pagesInBetween.slice(currentLocation - 3, currentLocation + 3);
+        after = pagesInBetween.slice(currentLocation + 3);
       }
-      if (paginationGroup[2] < pageCount - 1) {
-        after = true;
-      }
+
     }
     setGaps({ paginationGroup, before, after });
   }, [page, pagesInBetween, pageCount]);
 
-  // change page based on direction either front or back
-  const changePage = (direction: boolean) => {
-    setPage((state) => {
-      // move forward
-      if (direction) {
-        // if page is the last page, do nothing
-        if (state === pageCount) {
-          return state;
-        }
-        return state + 1;
-        // go back
-      } else {
-        // if page is the first page, do nothing
-        if (state === 1) {
-          return state;
-        }
-        return state - 1;
-      }
-    });
-  };
-
   const setPageSAFE = (num: number) => {
-    // if number is greater than number of pages, set to last page
-    if (num > pageCount) {
-      setPage(pageCount);
-      // if number is less than 1, set page to first page
-    } else if (num < 1) {
-      setPage(1);
-    } else {
-      setPage(num);
-    }
+    setPage(num);
   };
 
   return {

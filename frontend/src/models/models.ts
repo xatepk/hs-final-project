@@ -18,6 +18,6 @@ export interface UsePaginationReturn {
   firstContentIndex: number;
   lastContentIndex: number;
   setPage: (page: number) => void;
-  gaps: { before: boolean; paginationGroup: number[]; after: boolean };
+  gaps: { before: number[]; paginationGroup: number[]; after: number[] };
 }
 export type UsePagination = (arg0: UsePaginationProps) => (UsePaginationReturn);
