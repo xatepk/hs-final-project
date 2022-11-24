@@ -29,4 +29,14 @@ const deleteNews = (req, res, next) => News.deleteMany({})
 )
 .catch((next));
 
-module.exports = {getNews, postNews, deleteNews};
+const getNewsById = (req, res, next) => News.findById(req.params._id)
+.then((news) => {
+  console.log(news);
+  if (!news) {
+    throw new NotFound('Нет новости с таким id');
+  }
+  res.status(200).send(news);
+})
+.catch(next);
+
+module.exports = {getNews, postNews, deleteNews, getNewsById};

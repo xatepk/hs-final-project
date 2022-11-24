@@ -7,9 +7,7 @@ import { fetchNews } from "../store/actions/newsActions";
 
 function NewsPage() {
   const dispatch = useAppDispatch();
-  const { //error,
-    //loading,
-    news } = useAppSelector(state => state.news);
+  const { error, loading, news } = useAppSelector(state => state.news);
 
   const {
     firstContentIndex,
@@ -30,6 +28,8 @@ function NewsPage() {
 
   return (
     <>
+      {error && <p>{error}</p>}
+      {loading && <p>Loading...</p> }
       {news.length > 0 && <ul className="news">
 
         {news
