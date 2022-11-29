@@ -27,7 +27,7 @@ function MainHeader() {
           </ul>
         </li>
         <li className="header__item">
-          <Link to="/auth" className='header__item-link'>Вход и регистрация</Link>
+          <Link to="/auth" className='header__item-link header__item-link_purple'>Вход и регистрация</Link>
         </li>
       </ul>
     </nav>
