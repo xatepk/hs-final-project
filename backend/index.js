@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const newsRoutes = require('./routes/news');
+const apartmentsRouters = require('./routes/apartments');
 const errorHandler = require('./middlewares/errorHandler');
 const config = require('./config/index.js');
 const { NotFound } = require('./errors');
@@ -27,6 +28,7 @@ mongoose.connect(MONGO_URL, {
   });
 
 app.use('/', newsRoutes);
+app.use('/', apartmentsRouters);
 // app.use(() => {
 //   throw new NotFound('Запрашиваемый ресурс не найден');
 // });
