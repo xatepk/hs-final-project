@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import newsReducer from './slices/newsSlice';
 import newsDetailsReducer from './slices/newsDetailsSlice';
+import apartmentsReducer from './slices/apartmentsSlice';
 
 const rootReducer = combineReducers({
   news: newsReducer,
-  newsDetails: newsDetailsReducer
+  newsDetails: newsDetailsReducer,
+  apartments: apartmentsReducer
 })
 
 export function setupStore() {

@@ -10,7 +10,7 @@ function SubHeader() {
         </Link>
       </li>
       <li className="header__item subheader__item">
-        <Link className="header__item-link subheader__item-link" to='/'>
+        <Link className="header__item-link subheader__item-link" to='apartments'>
           Квартиры на сутки
         </Link>
       </li>
