@@ -7,6 +7,18 @@ export interface INews {
   image: string
 }
 
+export interface IApartments {
+  _id: string,
+  description: string,
+  rooms: number,
+  likes: string[],
+  price: number,
+  location: string,
+  area: string,
+  underground: string,
+  imageUrls: string[]
+}
+
 export interface UsePaginationProps {
   contentPerPage: number,
   count: number,

@@ -1,0 +1,143 @@
+.apartments {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: 406px;
+    filter: drop-shadow(0px 20px 40px rgba(39, 95, 158, 0.15));
+    border-radius: 10px;
+    margin-right: 31px;
+    margin-bottom: 31px;
+  }
+
+  &__item-image {
+    width: 100%;
+    height: 226px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  &__address {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    margin-bottom: 11px;
+  }
+
+  &__address-location {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin-left: 10px;
+    color: #000000;
+  }
+
+  &__area {
+    display: flex;
+    margin: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  &__area-location {
+    margin-left: 6px;
+    margin-right: 30px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__item-desc {
+    margin: 0 20px;
+    font-size: 12px;
+    line-height: 150%;
+    color: #686868;
+    letter-spacing: 0.03em;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(78, 100, 249, .1);
+    padding-top: 13px;
+    margin: 0 20px;
+    margin-top: 13px;
+  }
+
+  &__like {
+    width: 33px;
+    height: 33px;
+    background: url('../../img/icons/apartments/like.svg') no-repeat rgba(235, 87, 87, 0.1);
+    border: none;
+    border-radius: 22px;
+    background-size: contain;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    background-color: #F8F8F8;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 15px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+
+  &__contacts-desc {
+    font-size: 14px;
+    line-height: 17px;
+    color: #664EF9;
+    margin-left: 10px;
+  }
+
+  &__more {
+    background-color: rgba(255, 213, 79, 0.1);
+    border: none;
+    border-radius: 17px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FEC100;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+}
+
+.carousel-control-prev-icon {
+  background-image: url('../../img/icons/prev-icon.svg');
+}
+
+.carousel-control-next-icon {
+  background-image: url('../../img/icons/next-icon.svg');
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 29px;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
