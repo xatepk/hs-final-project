@@ -1,0 +1,36 @@
+.apartments-fz (@pt) {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #686868;
+  padding: 8px @pt;
+  background-color: #F8F8F8;
+  border-radius: 18px;
+}
+
+.apartments-button (@img, @width) {
+  padding: 10px 15px;
+  border-radius: 18px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #1E2123;
+  display: flex;
+
+  &::before {
+    width: @width;
+    height: 14px;
+    content: url(@img);
+    margin-right: 10px;
+  }
+}
+
+.buton-df () {
+  border: none;
+  background-color: #fff;
+}
+
+.apartments-bs () {
+  box-shadow: 0px 5px 20px rgba(0, 96, 206, 0.1);
+}
+
