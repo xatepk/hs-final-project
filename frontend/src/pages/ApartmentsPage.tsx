@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import plural from 'plural-ru';
 import Apartment from "../components/Apartment";
 import Pagination from "../components/Pagination";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import usePagination from "../hooks/usePagination";
 import { fetchApartments } from "../store/actions/apartmentsActions";
+import { Link } from "react-router-dom";
 
 function ApartmentsPage() {
   const dispatch = useAppDispatch();
   const { loading, error, apartments } = useAppSelector(state => state.apartments);
+  const [sortList, setSortList] = useState<boolean>(true);
 
   const {
     firstContentIndex,
@@ -17,7 +20,7 @@ function ApartmentsPage() {
     setPage,
     totalPages,
   } = usePagination({
-    contentPerPage: 6,
+    contentPerPage: sortList ? 3 : 6,
     count: apartments.length,
   });
 
@@ -30,11 +33,22 @@ function ApartmentsPage() {
     {loading && <p>Loading...</p>}
     {apartments.length > 0 &&
     <section className="apartments">
-      <ul className="apartments__list">
+      <div className="apartments__sort">
+        <p>ПО УМОЛЧАНИЮ</p>
+        <button
+        className={`apartments__sort-list ${sortList ? 'apartments__sort-list_is-active' : ''}`}
+        onClick={(() => setSortList(true))}>Список</button>
+        <button
+        className={`apartments__sort-tile ${!sortList ? 'apartments__sort-tile_is-active' : ''}`}
+        onClick={(() => setSortList(false))}>Плитка</button>
+        <Link to="/" className="apartments__sort-map">Показать на карте</Link>
+      </div>
+      <p className="apartments__result">Найдено  {plural(apartments.length, '%d результат', '%d результата', '%d результатов')} </p>
+      <ul className={`apartments__list ${sortList ? 'apartments__list_list' : ''}`}>
 
         {apartments
           .slice(firstContentIndex, lastContentIndex)
-          .map((apartment) => <Apartment key={apartment._id} apartment={apartment} />)
+          .map((apartment) => <Apartment key={apartment._id} apartment={apartment} sortList={sortList} />)
         }
 
       </ul>
