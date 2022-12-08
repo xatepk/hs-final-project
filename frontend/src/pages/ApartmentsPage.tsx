@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import usePagination from "../hooks/usePagination";
 import { fetchApartments } from "../store/actions/apartmentsActions";
 import { Link } from "react-router-dom";
+import ApartmentsLocation from "../components/ApartmentsLocation";
 
 function ApartmentsPage() {
   const dispatch = useAppDispatch();
@@ -54,6 +55,7 @@ function ApartmentsPage() {
       </ul>
     </section>}
     {apartments.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} />}
+    <ApartmentsLocation />
   </>);
 }
 
