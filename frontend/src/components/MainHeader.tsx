@@ -22,7 +22,7 @@ function MainHeader() {
               <Link to="/" className='header__item-link'>Контакты</Link>
             </li>
             <li className='header__item'>
-              <Link to="/" className='header__item-link'>Закладки</Link>
+              <Link to="/" className='header__item-link header__item-link_after'>Закладки</Link>
             </li>
           </ul>
         </li>
