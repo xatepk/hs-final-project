@@ -27,7 +27,7 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
     if (pageCount > 2) {
       const temp = new Array(pageCount).fill(1).map((_, i) => i + 1);
       setPagesInBetween(temp);
-    }
+    } else setPagesInBetween([]);
   }, [pageCount]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
     let before:number[] = [];
     let after:number[] = [];
 
-    if (pagesInBetween.length && pagesInBetween.length <= 10) {
+    if (pagesInBetween.length && pagesInBetween.length <= 10 && currentLocation !== -1) {
       before = pagesInBetween.slice(0, 1);
       paginationGroup = pagesInBetween.slice(1, -1);
       after = pagesInBetween.slice(-1);
