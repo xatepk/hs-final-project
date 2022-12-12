@@ -6,7 +6,6 @@ interface UsePaginationProps {
 }
 
 function Pagination({ page, totalPages, gaps, setPage }: UsePaginationProps) {
-
   return (
     <ul className="pagination pagination__list">
       <li
