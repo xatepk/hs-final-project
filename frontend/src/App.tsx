@@ -6,6 +6,7 @@ import AuthPage from './pages/AuthPage';
 import MainPage from './pages/MainPage';
 import NewsDetailPage from './pages/NewsDetailsPage';
 import NewsPage from './pages/NewsPage';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path='/news' element={<NewsPage />}></Route>
       <Route path='/apartments' element={<ApartmentsPage />}></Route>
       <Route path='/news/:id' element={<NewsDetailPage />}></Route>
+      <Route path="*" element={<PageNotFound />}></Route>
     </Routes>
     <Footer />
     </div>
