@@ -16,10 +16,10 @@ function MainHeader() {
               <Link to="/" className='header__item-link'>Размещение и тарифы</Link>
             </li>
             <li className='header__item'>
-              <Link to="/" className='header__item-link'>Объявления на карте</Link>
+              <Link to="/apartments" className='header__item-link'>Объявления на карте</Link>
             </li>
             <li className='header__item'>
-              <Link to="/" className='header__item-link'>Контакты</Link>
+              <Link to="/contacts" className='header__item-link'>Контакты</Link>
             </li>
             <li className='header__item'>
               <Link to="/" className='header__item-link header__item-link_after'>Закладки</Link>
