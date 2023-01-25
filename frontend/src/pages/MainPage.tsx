@@ -1,4 +1,5 @@
 // import MainPageNavigation from "../components/MainPageNavigation";
+import MainPageRentGeo from "../components/MainPageRentGeo";
 import MainPageRentPhoto from "../components/MainPageRentPhoto";
 import MainPageRentList from "./MainPageRentList";
 
@@ -11,6 +12,7 @@ function MainPage() {
         <MainPageRentPhoto />
         <MainPageRentList />
       </div>
+        <MainPageRentGeo />
     </section>
   );
 }
