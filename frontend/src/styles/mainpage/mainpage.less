@@ -1,0 +1,168 @@
+.mainpage {
+  width: 100%;
+
+  &__rent {
+    display: flex;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__rent-photo {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  &__rent-photo-item {
+    position: relative;
+    list-style: none;
+    height: 270px;
+    flex-basis: 54%;
+    margin-right: 30px;
+    margin-bottom: 28px;
+    border-radius: 10px;
+
+    &:nth-child(1) {
+      background: url('../../img/icons/mainpage/rentflat.svg') no-repeat center;
+      background-size: cover;
+    }
+
+    &:nth-child(2) {
+      flex-basis: 42%;
+      background: url('../../img/icons/mainpage/rentcott.svg') no-repeat center;
+      background-size: cover;
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(3) {
+      flex-basis: 42%;
+      background: url('../../img/icons/mainpage/rentsauna.svg') no-repeat center;
+      background-size: cover;
+    }
+
+    &:nth-child(4) {
+      background: url('../../img/icons/mainpage/rentauto.svg') no-repeat center;
+      background-size: cover;
+    }
+  }
+
+  &__rent-text {
+    width: 100%;
+    max-width: 297px;
+    margin-left: 30px;
+  }
+
+  &__photo-title {
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #9D94FF 0%, #6B50E9 94.5%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 38px 0 16px 38px;
+    margin: 0;
+  }
+
+  &__photo-desc {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    padding-left: 38px;
+  }
+
+  &__photo-button {
+    position: absolute;
+    bottom: 19px;
+    right: 19px;
+    width: 40px;
+    height: 40px;
+    background: url('../../img/icons/mainpage/rentbutton.svg') no-repeat center;
+    background-size: cover;
+    border: none;
+
+    &:hover {
+      opacity: .8;
+    }
+
+  }
+
+  &__text-list {
+    padding: 0;
+  }
+
+  &__text-item {
+    list-style: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+    margin-bottom: 40px;
+  }
+
+  &__category-list {
+    padding: 0;
+  }
+
+  &__list-item {
+    list-style: none;
+    margin-top: 10px;
+
+    &:first-of-type {
+      margin-top: 15px;
+    }
+  }
+
+  &__list-block-geo {
+    margin: 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FEB700;
+
+    &:hover {
+      margin-left: 10px;
+    }
+  }
+
+  &__list-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__list-block-count {
+    font-size: 14px;
+    line-height: 17px;
+    color: #BDBDBD;
+  }
+
+  &__list-button {
+    padding-bottom: 3px;
+    border: none;
+    border-bottom: 1px solid #F5BC03;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FEB700;
+    background-color: #FFFFFF;
+
+    &:hover {
+      opacity: .8;
+    }
+
+    &:after {
+      width: 10px;
+      height: 10px;
+      content: url('../../img/icons/mainpage/down.svg');
+      margin-left: 3px;
+    }
+  }
+}
