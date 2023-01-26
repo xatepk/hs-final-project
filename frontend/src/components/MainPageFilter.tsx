@@ -1,27 +1,34 @@
 function MainPageFilter() {
   return (
-    <>
-      <ul className="mainpage__filter">
+    <div className="mainpage__filter">
+      <ul className="mainpage__filter-list">
         <li className="mainpage__filter-item">
-          <select name="city">
+          <h3 className="mainpage__filter-item-title">Город</h3>
+          <select name="city" className="mainpage__filter-select">
             <option disabled selected value="">Выберите</option>
             <option>Минск</option>
           </select>
         </li>
         <li className="mainpage__filter-item">
-          <select name="bedroom">
+          <h3 className="mainpage__filter-item-title">Комнаты</h3>
+          <select name="bedroom" className="mainpage__filter-select">
             <option disabled selected value="">Выберите</option>
           </select>
         </li>
         <li className="mainpage__filter-item">
-          <label><input placeholder="от"></input></label>
-          <label><input placeholder="до"></input></label>
+          <h3 className="mainpage__filter-item-title">Цена за сутки (BYN)</h3>
+          <label className="mainpage__filter-label">
+            <input className="mainpage__filter-input mainpage__filter-input_mr" placeholder="От"></input>
+          -</label>
+          <label>
+            <input className="mainpage__filter-input mainpage__filter-input_ml"placeholder="До"></input>
+          </label>
         </li>
-        <li className="mainpage__filter-item">Больше опций</li>
-        <li className="mainpage__filter-item">На карте</li>
+        <li className="mainpage__filter-item mainpage__filter-item_option">Больше опций</li>
+        <li className="mainpage__filter-item mainpage__filter-item_map">На карте</li>
       </ul>
-      <button>Показать</button>
-    </>
+      <button className="mainpage__filter-button">Показать</button>
+    </div>
   );
 }
 
