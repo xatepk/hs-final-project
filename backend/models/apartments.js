@@ -27,6 +27,11 @@ const dataSchema = new Schema({
     minlength: 2,
     required: true,
   },
+  city: {
+    type: String,
+    minlength: 2,
+    required: true,
+  },
   price: {
     type: Number,
     required: true,

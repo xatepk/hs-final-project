@@ -9,6 +9,7 @@ export const fetchApartments = () => {
       dispatch(apartmentsSlice.actions.fetching());
       const response = await axios.get<IApartments[]>('apartments');
       dispatch(apartmentsSlice.actions.fetchSuccess(response.data));
+      debugger;
 
     } catch (err) {
       dispatch(apartmentsSlice.actions.fetchError(err as Error));
