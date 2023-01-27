@@ -2,11 +2,13 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import newsReducer from './slices/newsSlice';
 import newsDetailsReducer from './slices/newsDetailsSlice';
 import apartmentsReducer from './slices/apartmentsSlice';
+import citiesReducer from './slices/citiesSlice'
 
 const rootReducer = combineReducers({
   news: newsReducer,
   newsDetails: newsDetailsReducer,
-  apartments: apartmentsReducer
+  apartments: apartmentsReducer,
+  cities: citiesReducer
 })
 
 export function setupStore() {

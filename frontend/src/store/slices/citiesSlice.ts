@@ -1,29 +1,29 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IApartments } from "../../models/models"
+import { ICities } from "../../models/models"
 
-interface ApartmentsState {
+interface CitiesState {
   loading: boolean,
   error: string,
-  apartments: IApartments[]
+  cities: ICities[]
 
 }
 
-const initialState: ApartmentsState = {
+const initialState: CitiesState = {
   loading: false,
   error: '',
-  apartments: []
+  cities: []
 }
 
-export const apartmentsSlice = createSlice({
-  name: 'apartments',
+export const citiesSlice = createSlice({
+  name: 'cities',
   initialState,
   reducers: {
     fetching(state) {
       state.loading = true;
     },
-    fetchSuccess(state, action: PayloadAction<IApartments[]>) {
+    fetchSuccess(state, action: PayloadAction<ICities[]>) {
       state.loading = false;
-      state.apartments = action.payload;
+      state.cities = action.payload;
     },
     fetchError(state, action: PayloadAction<Error>) {
       state.loading = false;
@@ -33,4 +33,4 @@ export const apartmentsSlice = createSlice({
 })
 
 
-export default apartmentsSlice.reducer;
+export default citiesSlice.reducer;
