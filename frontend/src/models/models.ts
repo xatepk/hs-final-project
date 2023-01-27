@@ -19,6 +19,11 @@ export interface IApartments {
   imageUrls: string[]
 }
 
+export interface ICities {
+  _id: string,
+  city: string
+}
+
 export interface UsePaginationProps {
   contentPerPage: number,
   count: number,
