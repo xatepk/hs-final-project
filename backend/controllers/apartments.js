@@ -70,3 +70,13 @@ module.exports.createApartment = (req, res, next) => {
     console.log(page)
   })
 };
+
+module.exports.getApartmentsByCity = (req, res, next) => {
+  const city = req.params.city;
+  Apartments.find({city: city})
+  .orFail(() => {
+    throw new NotFound('Квартиры не найдены');
+  })
+  .then((apartments) => res.status(200).send(apartments))
+  .catch(next);
+}

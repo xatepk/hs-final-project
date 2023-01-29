@@ -6,6 +6,7 @@ import MainPageAboutRent from "../components/MainPageAboutRent";
 import MainPageRentGeo from "../components/MainPageRentGeo";
 import MainPageRentPhoto from "../components/MainPageRentPhoto";
 import MainPageRentList from "./MainPageRentList";
+import MainPageApartmentsMinsk from "../components/MainPageApartmentsMinsk";
 
 function MainPage() {
 
@@ -31,6 +32,7 @@ function MainPage() {
         <MainPageRentList />
       </div>
 
+      <MainPageApartmentsMinsk />
       <MainPageRentGeo />
       <MainPageAboutRent />
     </section>
