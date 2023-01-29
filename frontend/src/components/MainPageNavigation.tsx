@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
+import { ICities } from "../models/models";
 import MainPageFilter from "./MainPageFilter";
 
-function MainPageNavigation() {
+interface CitiesProps {
+  cities: ICities[];
+}
+
+
+function MainPageNavigation({cities}: CitiesProps) {
   return (
     <div className="mainpage__tabs-container">
       <div className="mainpage__block-tabs">
@@ -18,7 +24,7 @@ function MainPageNavigation() {
       </div>
 
       <div className="mainpage__tabs-content">
-        <MainPageFilter />
+        <MainPageFilter cities={cities}/>
       </div>
     </div>
   );
