@@ -137,6 +137,8 @@
   }
 
   &__filter-select {
+    display: flex;
+    align-items: center;
     padding: 9px 69px 11px 12px;
     font-weight: 500;
     font-size: 14px;
@@ -145,6 +147,24 @@
     border: none;
     background: #F8F8F8;
     border-radius: 20px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+
+  }
+
+  &__main-option {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      width: 18px;
+      height: 18px;
+      content: url('../../img/icons/mainpage/select.svg');
+      margin-left: 43px;
+      margin-right: 8px;
+    }
   }
 
   &__filter-label {
@@ -297,6 +317,45 @@ border: 2px solid rgba(102, 78, 249, 0.8);
       opacity: .8;
     }
 
+  }
+
+  &__rent-cities-list {
+    padding: 0;
+    margin-left: 38px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 14px;
+    width: 100%;
+    max-width: 365px;
+  }
+
+  &__rent-cities-item {
+    list-style: none;
+    padding: 8px 0;
+    background-color: #664EF9;
+    border-radius: 16px;
+    text-align: center;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+
+  &__rent-cities-link {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
   }
 
   &__text-list {
