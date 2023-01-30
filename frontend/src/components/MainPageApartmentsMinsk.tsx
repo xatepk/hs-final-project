@@ -50,7 +50,7 @@ function MainPageApartmentsMinsk() {
         <ul className="apartments__list">
           {apartments
             .slice(firstContentIndex, lastContentIndex)
-            .map((apartment) => <Apartment key={apartment._id} apartment={apartment} sortList={false} />)
+            .map((apartment) => <Apartment key={apartment._id} apartment={apartment} sortList={false} mainpage={true} />)
           }
         </ul>
         {apartments.length && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} visibility={true} />}
