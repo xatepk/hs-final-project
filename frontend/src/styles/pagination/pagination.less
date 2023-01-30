@@ -2,8 +2,53 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  list-style-type: none;
   display: flex;
+
+  &_center {
+    justify-content: center;
+    margin-top: 38px;
+    margin-bottom: 32px;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #664EF9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-right: 13px;
+
+    &:last-of-type{
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: rgba(102, 78, 249, 0.1);
+    }
+
+    &_disabled {
+      background-color: transparent !important;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &_left {
+      content: url('../../img/icons/mainpage/pag_left.svg');
+    }
+
+    &_rigth {
+      content: url('../../img/icons/mainpage/pag_rigth.svg');
+    }
+  }
+
+  &__list {
+    padding: 0;
+    display: flex;
+  }
 
   &__item {
     font-weight: 400;
@@ -11,8 +56,9 @@
     line-height: 22px;
     color: #686868;
     margin-right: 9px;
+    list-style-type: none;
 
-    &:last-of-type{
+    &:last-of-type {
       margin-right: 0;
     }
 

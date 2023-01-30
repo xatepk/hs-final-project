@@ -34,6 +34,8 @@ export interface UsePaginationReturn {
   totalPages: number;
   firstContentIndex: number;
   lastContentIndex: number;
+  nextPage: () => void;
+  prevPage: () => void;
   setPage: (page: number) => void;
   gaps: { before: number[]; paginationGroup: number[]; after: number[] };
 }

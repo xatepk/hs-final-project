@@ -18,6 +18,8 @@ function ApartmentsPage() {
     lastContentIndex,
     page,
     gaps,
+    nextPage,
+    prevPage,
     setPage,
     totalPages,
   } = usePagination({
@@ -54,7 +56,7 @@ function ApartmentsPage() {
 
       </ul>
     </section>}
-    {apartments.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} />}
+    {apartments.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} visibility={false} />}
     <ApartmentsLocation />
   </>);
 }

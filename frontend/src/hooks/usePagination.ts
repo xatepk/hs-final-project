@@ -66,8 +66,30 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
     setPage(num);
   };
 
+  const changePage = (direction: boolean) => {
+    setPage((state) => {
+      // move forward
+      if (direction) {
+        // if page is the last page, do nothing
+        if (state === pageCount) {
+          return state;
+        }
+        return state + 1;
+        // go back
+      } else {
+        // if page is the first page, do nothing
+        if (state === 1) {
+          return state;
+        }
+        return state - 1;
+      }
+    });
+  };
+
   return {
     totalPages: pageCount,
+    nextPage: () => changePage(true),
+    prevPage: () => changePage(false),
     setPage: setPageSAFE,
     firstContentIndex,
     lastContentIndex,

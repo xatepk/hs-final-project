@@ -18,6 +18,8 @@ function NewsPage() {
     lastContentIndex,
     page,
     gaps,
+    nextPage,
+    prevPage,
     setPage,
     totalPages,
   } = usePagination({
@@ -69,7 +71,8 @@ function NewsPage() {
               }
 
             </ul>
-            {filteredNews.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} />}</>
+            {filteredNews.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} visibility={false} />}
+          </>
 
         }
       </div>
