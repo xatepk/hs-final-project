@@ -3,10 +3,11 @@ import Carousel from 'react-bootstrap/Carousel';
 
 interface ApartmentProps {
   apartment: IApartments;
-  sortList: boolean
+  sortList: boolean;
+  mainpage: boolean;
 }
 
-function Apartment({ apartment, sortList }: ApartmentProps) {
+function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
   return (
     <li className={`apartments__item ${sortList ? 'apartments__item_row' : ''}`}>
       <Carousel interval={null} fade>
@@ -21,7 +22,8 @@ function Apartment({ apartment, sortList }: ApartmentProps) {
           <div className="apartments__info">
             <p className="apartments__info-price">{apartment.price}.00 BYN <span className="apartments__info-price_grey">за сутки</span></p>
             <p className="apartments__info-count">4 (2+2)</p>
-            <p className="apartments__info-bedrooms">{apartment.rooms} комн.</p>
+            <p className={`apartments__info-bedrooms ${mainpage && "apartments__info-bedrooms_ml"}`}>{apartment.rooms} комн.</p>
+            {mainpage && <p className={`apartments__info-bedrooms ${mainpage && "apartments__info-bedrooms_ml"}`}>179 м<sup>2</sup></p>}
           </div>
           <div className="apartments__address">
             <span className="apartments__address-location">{apartment.location}</span>
@@ -51,7 +53,7 @@ function Apartment({ apartment, sortList }: ApartmentProps) {
 
         <p className="apartments__item-desc">{apartment.description}</p>
         <div className={`apartments__buttons ${sortList ? 'apartments__buttons_list' : ''}`}>
-          {!sortList && <button className="apartments__like"></button>}
+          {!sortList && !mainpage && <button className="apartments__like"></button>}
           <button className="apartments__contacts">
             <span className="apartments__contacts-desc">Контакты</span>
           </button>
