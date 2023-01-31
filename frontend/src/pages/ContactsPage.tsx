@@ -5,8 +5,18 @@ import mobile from '../img/icons/contacts/mobile.svg';
 import ig from '../img/icons/contacts/ig.svg';
 import vk from '../img/icons/contacts/vk.svg';
 import fb from '../img/icons/contacts/fb.svg';
+import PopupContactsSend from "../components/PopupContactsSend";
+import { useState } from "react";
 
 function ContactsPage() {
+
+  const[active, setActive] = useState<boolean>(false);
+
+  function handleClickPopup(e:React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    setActive(true);
+  }
+
   return (
     <section className="contacts">
       <div className="contacts__row">
@@ -59,7 +69,7 @@ function ContactsPage() {
               <div className="invalid-feedback"></div>
             </div>
             <div className="contacts__form-submit">
-              <button type="submit" className="contacts__form-button">Отправить</button>
+              <button type="submit" className="contacts__form-button" onClick={handleClickPopup}>Отправить</button>
             </div>
           </form>
         </div>
@@ -77,6 +87,7 @@ function ContactsPage() {
           </ul>
         </div>
       </div>
+      <PopupContactsSend active={active} setActive={setActive} />
     </section>);
 }
 
