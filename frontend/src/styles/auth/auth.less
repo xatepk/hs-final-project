@@ -1,0 +1,121 @@
+.auth {
+  height: 100vh;
+  width: 100vw;
+  background: #7E6AF3;
+  background-image: url('../../img/icons/auth/bg.svg');
+  background: url('../../img/icons/auth/bg.svg'), linear-gradient(1.09deg, #7E6AF3 0.86%, #6540CD 99.01%) no-repeat center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 406px;
+    background: #FFFEFE;
+    box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.2);
+    border-radius: 10px;
+  }
+
+  &__title {
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+  }
+
+  &__desc {
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 35px;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #686868;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 306px;
+  }
+
+  &__form-item {
+    width: 100%;
+    margin-bottom: 20px;
+    background: #F7F7F7;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    padding: 15px 20px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: #FFFFFF;
+      border: 2px solid rgba(78, 100, 249, 0.8);
+      outline: none;
+    }
+  }
+
+  &__form-que {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 38px;
+  }
+
+  &__remember-label {
+    font-size: 14px;
+    line-height: 20px;
+    color: #686868;
+  }
+
+  &__form-link {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #664EF9;
+  }
+
+  &__button-container {
+    width: 100%;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1E2123;
+    background: #FFD54F;
+    border-radius: 33px;
+    margin-bottom: 50px;
+    border: none;
+  }
+
+  &__register {
+    margin-bottom: 50px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #686868;
+  }
+
+  &__register-link {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 26px;
+    color: #664EF9;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+      color: #664EF9;
+    }
+  }
+
+}

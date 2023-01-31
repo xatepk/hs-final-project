@@ -1,4 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import NewsCard from "../components/NewsCard";
 import Pagination from "../components/Pagination";
 import { useDebounce } from "../hooks/debounce";
@@ -43,6 +45,7 @@ function NewsPage() {
   return (
     <>
       {error && <p>{error}</p>}
+      <Header />
       <div className="news">
         <div className="news__header">
           <p className="news__header-title">Новости</p>
@@ -76,6 +79,7 @@ function NewsPage() {
 
         }
       </div>
+      <Footer />
     </>
 
   );
