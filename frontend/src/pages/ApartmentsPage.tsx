@@ -7,6 +7,8 @@ import usePagination from "../hooks/usePagination";
 import { fetchApartments } from "../store/actions/apartmentsActions";
 import { Link } from "react-router-dom";
 import ApartmentsLocation from "../components/ApartmentsLocation";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function ApartmentsPage() {
   const dispatch = useAppDispatch();
@@ -31,34 +33,37 @@ function ApartmentsPage() {
     dispatch(fetchApartments());
   }, [dispatch]);
 
-  return (<>
-    {error && <p>{error}</p>}
-    {loading && <p>Loading...</p>}
-    {apartments.length > 0 &&
-    <section className="apartments">
-      <div className="apartments__sort">
-        <p>ПО УМОЛЧАНИЮ</p>
-        <button
-        className={`apartments__sort-list ${sortList ? 'apartments__sort-list_is-active' : ''}`}
-        onClick={(() => setSortList(true))}>Список</button>
-        <button
-        className={`apartments__sort-tile ${!sortList ? 'apartments__sort-tile_is-active' : ''}`}
-        onClick={(() => setSortList(false))}>Плитка</button>
-        <Link to="/" className="apartments__sort-map">Показать на карте</Link>
-      </div>
-      <p className="apartments__result">Найдено  {plural(apartments.length, '%d результат', '%d результата', '%d результатов')} </p>
-      <ul className={`apartments__list ${sortList ? 'apartments__list_list' : ''}`}>
+  return (
+    <>
+      <Header />
+      {error && <p>{error}</p>}
+      {loading && <p>Loading...</p>}
+      {apartments.length > 0 &&
+        <section className="apartments">
+          <div className="apartments__sort">
+            <p>ПО УМОЛЧАНИЮ</p>
+            <button
+              className={`apartments__sort-list ${sortList ? 'apartments__sort-list_is-active' : ''}`}
+              onClick={(() => setSortList(true))}>Список</button>
+            <button
+              className={`apartments__sort-tile ${!sortList ? 'apartments__sort-tile_is-active' : ''}`}
+              onClick={(() => setSortList(false))}>Плитка</button>
+            <Link to="/" className="apartments__sort-map">Показать на карте</Link>
+          </div>
+          <p className="apartments__result">Найдено  {plural(apartments.length, '%d результат', '%d результата', '%d результатов')} </p>
+          <ul className={`apartments__list ${sortList ? 'apartments__list_list' : ''}`}>
 
-        {apartments
-          .slice(firstContentIndex, lastContentIndex)
-          .map((apartment) => <Apartment key={apartment._id + 1} apartment={apartment} sortList={sortList} mainpage={false} />)
-        }
+            {apartments
+              .slice(firstContentIndex, lastContentIndex)
+              .map((apartment) => <Apartment key={apartment._id + 1} apartment={apartment} sortList={sortList} mainpage={false} />)
+            }
 
-      </ul>
-    </section>}
-    {apartments.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} visibility={false} />}
-    <ApartmentsLocation />
-  </>);
+          </ul>
+        </section>}
+      {apartments.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} visibility={false} />}
+      <ApartmentsLocation />
+      <Footer />
+    </>);
 }
 
 export default ApartmentsPage;

@@ -7,6 +7,8 @@ import MainPageRentGeo from "../components/MainPageRentGeo";
 import MainPageRentPhoto from "../components/MainPageRentPhoto";
 import MainPageRentList from "../components/MainPageRentList";
 import MainPageApartmentsMinsk from "../components/MainPageApartmentsMinsk";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function MainPage() {
 
@@ -18,23 +20,28 @@ function MainPage() {
   }, [dispatch]);
 
   return (
-    <section className="mainpage">
-      {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
-      <div className="mainpage__filter-block">
-        <h1 className="mainpage__title">Sdaem.by - у нас живут <span className="mainpage__title_yellow">ваши объявления</span></h1>
-        <MainPageNavigation cities={cities} />
-      </div>
+    <>
+      <Header />
+      <section className="mainpage">
+        {error && <p>{error}</p>}
+        {loading && <p>Loading...</p>}
+        <div className="mainpage__filter-block">
+          <h1 className="mainpage__title">Sdaem.by - у нас живут <span className="mainpage__title_yellow">ваши объявления</span></h1>
+          <MainPageNavigation cities={cities} />
+        </div>
 
-      <div className="mainpage__rent">
-        <MainPageRentPhoto cities={cities}/>
-        <MainPageRentList />
-      </div>
+        <div className="mainpage__rent">
+          <MainPageRentPhoto cities={cities} />
+          <MainPageRentList />
+        </div>
 
-      <MainPageApartmentsMinsk />
-      <MainPageRentGeo />
-      <MainPageAboutRent />
-    </section>
+        <MainPageApartmentsMinsk />
+        <MainPageRentGeo />
+        <MainPageAboutRent />
+      </section>
+      <Footer />
+    </>
+
   );
 }
 

@@ -1,6 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import { Routes, Route } from 'react-router-dom';
 import ApartmentsPage from './pages/ApartmentsPage';
 import AuthPage from './pages/AuthPage';
 import ContactsPage from './pages/ContactsPage';
@@ -12,17 +10,15 @@ import PageNotFound from './pages/PageNotFound';
 function App() {
   return (
     <div className='page'>
-    <Header />
-    <Routes>
-      <Route path='/' element={<MainPage />}></Route>
-      <Route path='/auth' element={<AuthPage />}></Route>
-      <Route path='/news' element={<NewsPage />}></Route>
-      <Route path='/apartments' element={<ApartmentsPage />}></Route>
-      <Route path='/news/:id' element={<NewsDetailPage />}></Route>
-      <Route path='/contacts' element={<ContactsPage />}></Route>
-      <Route path="*" element={<PageNotFound />}></Route>
-    </Routes>
-    <Footer />
+      <Routes>
+        <Route path='/' element={<MainPage />}></Route>
+        <Route path='/auth' element={<AuthPage />}></Route>
+        <Route path='/news' element={<NewsPage />}></Route>
+        <Route path='/apartments' element={<ApartmentsPage />}></Route>
+        <Route path='/news/:id' element={<NewsDetailPage />}></Route>
+        <Route path='/contacts' element={<ContactsPage />}></Route>
+        <Route path="*" element={<PageNotFound />}></Route>
+      </Routes>
     </div>
   );
 }
