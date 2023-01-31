@@ -51,7 +51,7 @@ function ApartmentsPage() {
 
         {apartments
           .slice(firstContentIndex, lastContentIndex)
-          .map((apartment) => <Apartment key={apartment._id} apartment={apartment} sortList={sortList} mainpage={false} />)
+          .map((apartment) => <Apartment key={apartment._id + 1} apartment={apartment} sortList={sortList} mainpage={false} />)
         }
 
       </ul>

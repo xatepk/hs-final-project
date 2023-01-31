@@ -7,7 +7,6 @@ import MainPageRentGeo from "../components/MainPageRentGeo";
 import MainPageRentPhoto from "../components/MainPageRentPhoto";
 import MainPageRentList from "../components/MainPageRentList";
 import MainPageApartmentsMinsk from "../components/MainPageApartmentsMinsk";
-import Contacts from "../components/Contacts";
 
 function MainPage() {
 
@@ -22,7 +21,6 @@ function MainPage() {
     <section className="mainpage">
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
-      <Contacts />
       <div className="mainpage__filter-block">
         <h1 className="mainpage__title">Sdaem.by - у нас живут <span className="mainpage__title_yellow">ваши объявления</span></h1>
         <MainPageNavigation cities={cities} />

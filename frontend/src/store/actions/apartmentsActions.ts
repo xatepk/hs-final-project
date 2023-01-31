@@ -36,7 +36,6 @@ export const fetchCities = () => {
       dispatch(citiesSlice.actions.fetching());
       const response = await axios.get<ICities[]>('cities');
       dispatch(citiesSlice.actions.fetchSuccess(response.data));
-      console.log(response.data);
 
     } catch (err) {
       dispatch(citiesSlice.actions.fetchError(err as Error));

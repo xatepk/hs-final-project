@@ -1,5 +1,7 @@
 import { IApartments } from "../models/models";
 import Carousel from 'react-bootstrap/Carousel';
+import Contacts from "./Contacts";
+import { useState } from "react";
 
 interface ApartmentProps {
   apartment: IApartments;
@@ -8,8 +10,11 @@ interface ApartmentProps {
 }
 
 function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
+
+  const [active, setActive] = useState(false);
+
   return (
-    <li className={`apartments__item ${sortList ? 'apartments__item_row' : ''}`}>
+    <li className={`apartments__item ${sortList ? 'apartments__item_row' : ''}`} >
       <Carousel interval={null} fade>
         {apartment.imageUrls.length > 0 &&
           apartment.imageUrls.map((imageUrl) =>
@@ -52,11 +57,15 @@ function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
           </>}
 
         <p className="apartments__item-desc">{apartment.description}</p>
-        <div className={`apartments__buttons ${sortList ? 'apartments__buttons_list' : ''}`}>
+        <div className={`apartments__buttons ${sortList ? 'apartments__buttons_list' : ''}`} >
           {!sortList && !mainpage && <button className="apartments__like"></button>}
-          <button className="apartments__contacts">
+
+          <button className="apartments__contacts" onClick={() => setActive(!active)} >
             <span className="apartments__contacts-desc">Контакты</span>
+            <Contacts active={active} />
           </button>
+
+
           {sortList && <button className="apartments__like apartments__like_list"><span className="apartments__like_red">В закладки</span></button>}
           <button className="apartments__more">Подробнее</button>
         </div>
