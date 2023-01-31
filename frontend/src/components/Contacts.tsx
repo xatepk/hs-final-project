@@ -3,9 +3,13 @@ import phone from '../img/icons/apartOwn/phone.svg';
 import wa from '../img/icons/apartOwn/wa.svg';
 import mail from '../img/icons/apartOwn/mail.svg';
 
-function Contacts() {
+interface ContactsProps {
+  active?: boolean;
+}
+
+function Contacts({ active = false }: ContactsProps) {
   return (
-    <div className="apartOwn">
+    <div className={`apartOwn ${active && "apartOwn_active"}`} onClick={(e) => e.stopPropagation}>
       <img src={avatar} alt="фото контакта" className="apartOwn__image" />
       <p className="apartOwn__own">Владелец</p>
       <p className="apartOwn__contacts apartOwn__contacts_mt">Владимир</p>

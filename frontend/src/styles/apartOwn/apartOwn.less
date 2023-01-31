@@ -1,4 +1,8 @@
 .apartOwn {
+  position: absolute;
+  bottom: 66px;
+  right: -96px;
+  z-index: 99;
   width: 274px;
   display: flex;
   flex-direction: column;
@@ -7,6 +11,21 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 40px rgba(135, 124, 202, 0.3);
   border-radius: 10px;
+  transform: scale(0);
+  visibility: hidden;
+  opacity: 0;
+
+  &:hover {
+    background-color: #fff;
+    opacity: 1;
+  }
+
+  &_active {
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity .5s linear;
+  }
 
   &__image {
     margin-top: 21px;
