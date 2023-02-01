@@ -8,6 +8,7 @@ function AuthPage() {
 
   const {
     values,
+    isValid,
     handleChange
   } = useFormWithValidation({});
 
@@ -42,7 +43,7 @@ function AuthPage() {
             </div>
             <Link to='/' className="auth__form-link">Забыли пароль?</Link>
           </div>
-          <input className="auth__button-container" type="submit" value="Войти" />
+          <input className="auth__button-container" type="submit" value="Войти" disabled={!isValid} />
         </form>
         <p className="auth__register">Еще нет аккаунта?
         <Link to='/register' className="auth__register-link"> Создайте аккаунт</Link>

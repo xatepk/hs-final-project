@@ -5,8 +5,13 @@ import login from '../img/icons/auth/login.svg';
 import password from '../img/icons/auth/password.svg';
 import mail from '../img/icons/auth/mail.svg';
 import { useFormWithValidation } from "../components/FormValidation";
+import React, { FormEvent } from "react";
+import { useAppDispatch } from "../hooks/redux";
+import { register } from "../store/actions/authActions";
 
 function RegistrationPage() {
+
+  const dispatch = useAppDispatch();
 
   const {
     values,
@@ -15,13 +20,18 @@ function RegistrationPage() {
     handleChange
   } = useFormWithValidation({});
 
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(register(values));
+  }
+
 
   return (
     <section className="register auth">
       <div className="register__content">
         <div className="auth__content register__con">
           <h2 className="auth__title auth__title_mb">Регистрация</h2>
-          <form method="POST" action="#" className="auth__form">
+          <form method="POST" action="#" className="auth__form" onSubmit={submitHandler} >
             <InputComponent
               value={values.username}
               onChange={handleChange}
@@ -37,7 +47,6 @@ function RegistrationPage() {
               name="email" type="email"
               placeholder="Электронная почта"
               img={mail}
-              pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;"
               error={errors.email} />
             <InputComponent
               value={values.password}
@@ -65,7 +74,7 @@ function RegistrationPage() {
             />
 
             {!isValid && <button className="auth__form-error">Ошибка ввода</button>}
-            <input className="auth__button-container auth__button-container_mt" type="submit" value="Зарегистрироваться" />
+            <input className="auth__button-container auth__button-container_mt" type="submit" value="Зарегистрироваться" disabled={!isValid} />
           </form>
         </div>
         <div className="register__desc register__con">
