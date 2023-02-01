@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import InputComponent from "../components/InputComponent";
+import login from '../img/icons/auth/login.svg';
+import password from '../img/icons/auth/password.svg';
 
 function AuthPage() {
   return (
@@ -7,8 +10,8 @@ function AuthPage() {
         <h2 className="auth__title">Авторизация</h2>
         <p className="auth__desc">Авторизируйтесь, чтобы начать публиковать свои объявления</p>
         <form method="POST" action="#" className="auth__form">
-          <input className="auth__form-item" required id="username" name="username" type="text" placeholder="Логин" autoComplete="off" />
-          <input className="auth__form-item" required id="password" name="password" type="password" placeholder="Пароль" autoComplete="off" />
+          <InputComponent name="username" type="text" placeholder="Логин" img={login} />
+          <InputComponent name="password" type="password" placeholder="Пароль" img={password} />
           <div className="auth__form-que">
             <div className="auth__form-remember">
               <input type="checkbox"

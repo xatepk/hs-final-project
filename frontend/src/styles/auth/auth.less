@@ -27,6 +27,10 @@
     font-size: 25px;
     line-height: 30px;
     color: #000000;
+
+    &_mb {
+      margin-bottom: 30px;
+    }
   }
 
   &__desc {
@@ -46,6 +50,16 @@
     max-width: 306px;
   }
 
+  &__form-input {
+    position: relative;
+  }
+
+  &__form-item-img {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+  }
+
   &__form-item {
     width: 100%;
     margin-bottom: 20px;
@@ -60,6 +74,10 @@
       background: #FFFFFF;
       border: 2px solid rgba(78, 100, 249, 0.8);
       outline: none;
+    }
+
+    &::placeholder {
+      padding-left: 35px;
     }
   }
 
@@ -95,6 +113,10 @@
     border-radius: 33px;
     margin-bottom: 50px;
     border: none;
+
+    &_mt {
+      margin-top: 20px;
+    }
   }
 
   &__register {
@@ -102,6 +124,10 @@
     font-size: 14px;
     line-height: 20px;
     color: #686868;
+
+    &_mt {
+      margin-top: 70px;
+    }
   }
 
   &__register-link {
