@@ -40,3 +40,13 @@ export interface UsePaginationReturn {
   gaps: { before: number[]; paginationGroup: number[]; after: number[] };
 }
 export type UsePagination = (arg0: UsePaginationProps) => (UsePaginationReturn);
+
+export interface IAuth {
+  password: string
+  username: string
+  email: string
+}
+
+export interface IAuthResponse {
+  token: string
+}
