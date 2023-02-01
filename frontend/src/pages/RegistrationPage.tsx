@@ -4,22 +4,67 @@ import InputComponent from "../components/InputComponent";
 import login from '../img/icons/auth/login.svg';
 import password from '../img/icons/auth/password.svg';
 import mail from '../img/icons/auth/mail.svg';
+import { useFormWithValidation } from "../components/FormValidation";
 
 function RegistrationPage() {
+
+  const {
+    values,
+    errors,
+    isValid,
+    handleChange
+  } = useFormWithValidation({});
+
+
   return (
     <section className="register auth">
       <div className="register__content">
         <div className="auth__content register__con">
           <h2 className="auth__title auth__title_mb">Регистрация</h2>
           <form method="POST" action="#" className="auth__form">
-            <InputComponent name="username" type="text" placeholder="Логин" img={login} />
-            <InputComponent name="email" type="email" placeholder="Электронная почта" img={mail} />
-            <InputComponent name="password" type="password" placeholder="Пароль" img={password} />
-            <InputComponent name="repeatpassword" type="password" placeholder="Повторите пароль" img={password} />
+            <InputComponent
+              value={values.username}
+              onChange={handleChange}
+              minLength={2}
+              pattern="^[а-яА-ЯёЁa-zA-Z -]+$"
+              name="username" type="text"
+              placeholder="Логин"
+              img={login}
+              error={errors.username} />
+            <InputComponent
+              value={values.email}
+              onChange={handleChange}
+              name="email" type="email"
+              placeholder="Электронная почта"
+              img={mail}
+              pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;"
+              error={errors.email} />
+            <InputComponent
+              value={values.password}
+              onChange={handleChange}
+              minLength={6}
+              pattern="^[а-яА-ЯёЁa-zA-Z -._%+-@]+$"
+              name="password"
+              type="password"
+              placeholder="Пароль"
+              img={password}
+              error={errors.password} />
+            <InputComponent
+              value={values.repeatpassword}
+              onChange={handleChange}
+              minLength={6}
+              pattern="^[а-яА-ЯёЁa-zA-Z -._%+-@]+$"
+              name="repeatpassword"
+              type="password"
+              placeholder="Повторите пароль"
+              img={password}
+              error={errors.repeatpassword} />
 
             <ReCAPTCHA
               sitekey={`${process.env.REACT_APP_RECAPTCHA_SITE_KEY}`}
             />
+
+            {!isValid && <button className="auth__form-error">Ошибка ввода</button>}
             <input className="auth__button-container auth__button-container_mt" type="submit" value="Зарегистрироваться" />
           </form>
         </div>

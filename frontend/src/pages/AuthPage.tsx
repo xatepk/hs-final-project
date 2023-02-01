@@ -1,17 +1,39 @@
 import { Link } from "react-router-dom";
+import { useFormWithValidation } from "../components/FormValidation";
 import InputComponent from "../components/InputComponent";
 import login from '../img/icons/auth/login.svg';
 import password from '../img/icons/auth/password.svg';
 
 function AuthPage() {
+
+  const {
+    values,
+    handleChange
+  } = useFormWithValidation({});
+
   return (
     <section className="auth">
       <div className="auth__content">
         <h2 className="auth__title">Авторизация</h2>
         <p className="auth__desc">Авторизируйтесь, чтобы начать публиковать свои объявления</p>
         <form method="POST" action="#" className="auth__form">
-          <InputComponent name="username" type="text" placeholder="Логин" img={login} />
-          <InputComponent name="password" type="password" placeholder="Пароль" img={password} />
+          <InputComponent
+          value={values.username}
+          onChange={handleChange}
+          minLength={ 2 }
+          pattern="^[а-яА-ЯёЁa-zA-Z -]+$"
+          name="username" type="text"
+          placeholder="Логин"
+          img={login} />
+          <InputComponent
+          value={values.password}
+          onChange={handleChange}
+          minLength={6}
+          pattern="^[а-яА-ЯёЁa-zA-Z -._%+-@]+$"
+          name="password"
+          type="password"
+          placeholder="Пароль"
+          img={password} />
           <div className="auth__form-que">
             <div className="auth__form-remember">
               <input type="checkbox"
