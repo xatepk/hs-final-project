@@ -9,6 +9,7 @@ const paths = require('./paths');
 const getHttpsConfig = require('./getHttpsConfig');
 
 const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 3001;
 const sockHost = process.env.WDS_SOCKET_HOST;
 const sockPath = process.env.WDS_SOCKET_PATH; // default: '/ws'
 const sockPort = process.env.WDS_SOCKET_PORT;
@@ -101,6 +102,7 @@ module.exports = function (proxy, allowedHost) {
     },
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
     proxy,
+    port,
     onBeforeSetupMiddleware(devServer) {
       // Keep `evalSourceMapMiddleware`
       // middlewares before `redirectServedPath` otherwise will not have any effect

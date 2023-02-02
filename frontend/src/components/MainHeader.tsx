@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../hooks/redux';
+import UserProfile from './UsersProfile';
 
 function MainHeader() {
+
+  const {isAuthenticated, username} = useAppSelector(state => state.auth);
+
   return (
     <nav className='header__nav'>
       <ul className='header__list'>
@@ -26,9 +31,10 @@ function MainHeader() {
             </li>
           </ul>
         </li>
-        <li className="header__item">
+        {!isAuthenticated && <li className="header__item">
           <Link to="/auth" className='header__item-link header__item-link_purple'>Вход и регистрация</Link>
-        </li>
+        </li>}
+        {isAuthenticated && <UserProfile username={username} />}
       </ul>
     </nav>
 

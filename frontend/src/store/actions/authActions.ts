@@ -18,7 +18,7 @@ export const register = (data: IAuth) => {
   }
 }
 
-export const login = (data: IAuth) => {
+export const autorization = (data: IAuth) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.post<IAuthResponse>(`signin`, data)
