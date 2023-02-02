@@ -1,5 +1,5 @@
 import ReCAPTCHA from "react-google-recaptcha";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputComponent from "../components/InputComponent";
 import login from '../img/icons/auth/login.svg';
 import password from '../img/icons/auth/password.svg';
@@ -12,6 +12,7 @@ import { register } from "../store/actions/authActions";
 function RegistrationPage() {
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {
     values,
@@ -20,9 +21,10 @@ function RegistrationPage() {
     handleChange
   } = useFormWithValidation({});
 
-  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(register(values));
+    await dispatch(register(values));
+    navigate('/');
   }
 
 
