@@ -40,6 +40,17 @@ module.exports.saveApartments = (req, res, next) => Apartments.findById(req.para
   }
 })
 
+module.exports.getSavedApartments = (req, res, next) => {
+  Apartments.find(
+    {likes: req.user._id}
+  )
+    .orFail(() => {
+      throw new NotFound('Квартиры не найдены');
+    })
+    .then((apartments) => res.status(200).send(apartments))
+    .catch(next);
+};
+
 
 module.exports.deleteApartments = (req, res, next) => Apartments.deleteMany({})
   .orFail(new NotFound('Карточки не найдены'))

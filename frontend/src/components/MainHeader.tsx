@@ -15,10 +15,10 @@ function MainHeader() {
               <Link to="/" className='header__item-link'>Главная</Link>
             </li>
             <li className='header__item'>
-              <Link to="news" className='header__item-link'>Новости</Link>
+              <Link to="/news" className='header__item-link'>Новости</Link>
             </li>
             <li className='header__item'>
-              <Link to="/" className='header__item-link'>Размещение и тарифы</Link>
+              <Link to="/apartments" className='header__item-link'>Размещение и тарифы</Link>
             </li>
             <li className='header__item'>
               <Link to="/apartments" className='header__item-link'>Объявления на карте</Link>
@@ -27,7 +27,7 @@ function MainHeader() {
               <Link to="/contacts" className='header__item-link'>Контакты</Link>
             </li>
             <li className='header__item'>
-              <Link to="/" className='header__item-link header__item-link_after'>Закладки</Link>
+              <Link to="/saved" className='header__item-link header__item-link_after'>Закладки</Link>
             </li>
           </ul>
         </li>

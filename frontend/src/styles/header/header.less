@@ -44,10 +44,18 @@
   }
 
   &__item-link {
+    display: flex;
+    align-items: center;
     font-size: 14px;
     line-height: 17px;
     color: #8291A3;
     text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+      color: #8291A3;
+    }
 
     &_after {
       &::after {

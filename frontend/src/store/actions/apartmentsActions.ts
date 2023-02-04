@@ -53,6 +53,23 @@ export const fetchSaveApartment = (id:string, token:string) => {
       dispatch(apartmentsSlice.actions.fetching());
       const response = await axios.patch<IApartments>(`/apartments/${id}/likes`,{}, config);
       dispatch(apartmentsSlice.actions.updateLikedSuccess(response.data));
+    } catch (err) {
+      dispatch(apartmentsSlice.actions.fetchError(err as Error));
+    }
+  }
+}
+
+export const fetchSavedApartments = (token:string) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+
+  return async (dispatch: AppDispatch) => {
+    try {
+      dispatch(apartmentsSlice.actions.fetching());
+      const response = await axios.get<IApartments[]>(`/saved`, config);
+      console.log(response)
+      dispatch(apartmentsSlice.actions.fetchSavedApatrments(response.data));
 
     } catch (err) {
       dispatch(apartmentsSlice.actions.fetchError(err as Error));

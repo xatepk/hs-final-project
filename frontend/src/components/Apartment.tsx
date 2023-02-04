@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import Contacts from "./Contacts";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchSaveApartment } from "../store/actions/apartmentsActions";
+import { fetchSaveApartment, fetchSavedApartments } from "../store/actions/apartmentsActions";
 
 interface ApartmentProps {
   apartment: IApartments;
@@ -14,14 +14,17 @@ interface ApartmentProps {
 function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
 
   const dispatch = useAppDispatch();
-  const { access } = useAppSelector(state => state.auth);
+  const { access, id } = useAppSelector(state => state.auth);
 
   const [active, setActive] = useState(false);
-  const [like, setLike] = useState(false);
 
-  const likeHandler = () => {
-    setLike(!like);
-    if (access) dispatch(fetchSaveApartment(apartment._id, access));
+  const isSaved = apartment.likes.some(i => i === id);
+
+  const likeHandler = async () => {
+    if (access) {
+      await dispatch(fetchSaveApartment(apartment._id, access));
+      dispatch(fetchSavedApartments(access));
+    }
   }
 
 
@@ -32,6 +35,7 @@ function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
           apartment.imageUrls.map((imageUrl) =>
             <Carousel.Item>
               <img className={`apartments__item-image ${sortList ? 'apartments__item-image_list' : ''}`} src={imageUrl} alt="фото квартиры" />
+              <p className="apartments__gold">Gold</p>
             </Carousel.Item>)}
       </Carousel>
       <div className="apartments__description">
@@ -72,7 +76,7 @@ function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
         <div className={`apartments__buttons ${sortList ? 'apartments__buttons_list' : ''}`} >
           {!sortList && !mainpage &&
             <button onClick={likeHandler}
-              className={`apartments__like ${like && " apartments__like_active"}`} />}
+              className={`apartments__like ${isSaved && " apartments__like_active"}`} />}
 
           <button className="apartments__contacts" onClick={() => setActive(!active)} >
             <span className="apartments__contacts-desc">Контакты</span>
@@ -82,7 +86,7 @@ function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
 
           {sortList &&
             <button onClick={likeHandler}
-              className={`apartments__like apartments__like_list ${like && " apartments__like_active"}`} >
+              className={`apartments__like apartments__like_list ${isSaved && " apartments__like_active"}`} >
               <span className="apartments__like_red">В закладки</span>
             </button>}
           <button className="apartments__more">Подробнее</button>

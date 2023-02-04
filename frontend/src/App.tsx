@@ -7,6 +7,7 @@ import NewsDetailPage from './pages/NewsDetailsPage';
 import NewsPage from './pages/NewsPage';
 import PageNotFound from './pages/PageNotFound';
 import RegistrationPage from './pages/RegistrationPage';
+import SavedApartments from './pages/SavedApartments';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/register' element={<RegistrationPage />}></Route>
         <Route path='/news' element={<NewsPage />}></Route>
         <Route path='/apartments' element={<ApartmentsPage />}></Route>
+        <Route path='/saved' element={<SavedApartments />}></Route>
         <Route path='/news/:id' element={<NewsDetailPage />}></Route>
         <Route path='/contacts' element={<ContactsPage />}></Route>
         <Route path="*" element={<PageNotFound />}></Route>

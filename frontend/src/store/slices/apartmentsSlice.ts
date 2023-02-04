@@ -4,14 +4,16 @@ import { IApartments } from "../../models/models"
 interface ApartmentsState {
   loading: boolean,
   error: string,
-  apartments: IApartments[]
+  apartments: IApartments[],
+  savedApartments: IApartments[]
 
 }
 
 const initialState: ApartmentsState = {
   loading: false,
   error: '',
-  apartments: []
+  apartments: [],
+  savedApartments: []
 }
 
 export const apartmentsSlice = createSlice({
@@ -29,6 +31,11 @@ export const apartmentsSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+    fetchSavedApatrments(state, action: PayloadAction<IApartments[]>) {
+      state.loading = false;
+      state.savedApartments = action.payload;
+    },
+
     updateLikedSuccess(state, action: PayloadAction<IApartments>) {
       state.loading = false;
 
