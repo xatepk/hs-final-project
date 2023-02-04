@@ -1,38 +1,50 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from '../img/logo.svg';
 
 function SubHeader() {
   return (
     <ul className="header__list subheader subheader__list">
       <li className="header__item subheader__item">
-        <Link className="header__item-link subheader__item-link" to='/'>
+        <NavLink
+        className="header__item-link subheader__item-link subheader__item-link_pt"
+        to='/'>
           <img src={logo} alt="логотип" className="subheader__logo logo" />
-        </Link>
+        </NavLink>
       </li>
       <li className="header__item subheader__item">
-        <Link className="header__item-link subheader__item-link" to='/apartments'>
+        <NavLink
+        className={({ isActive }) => (isActive ? "header__item-link subheader__item-link header__item-link_active header__item-link_apa" : "header__item-link subheader__item-link header__item-link_apa")}
+        to='/apartments'>
           Квартиры на сутки
-        </Link>
+        </NavLink>
       </li>
       <li className="header__item subheader__item">
-        <Link className="header__item-link subheader__item-link" to='/'>
+        <NavLink
+        className={({ isActive }) => (isActive ? "header__item-link subheader__item-link header__item-link_active" : "header__item-link subheader__item-link")}
+        to='/cottege'>
           Коттеджи и усадьбы
-        </Link>
+        </NavLink>
       </li>
       <li className="header__item subheader__item">
-        <Link className="header__item-link subheader__item-link" to='/'>
+        <NavLink
+        className={({ isActive }) => (isActive ? "header__item-link subheader__item-link header__item-link_active" : "header__item-link subheader__item-link")}
+        to='/sauna'>
           Бани и Сауны
-        </Link>
+        </NavLink>
       </li>
       <li className="header__item subheader__item">
-        <Link className="header__item-link subheader__item-link" to='/'>
+        <NavLink
+        className={({ isActive }) => (isActive ? "header__item-link subheader__item-link header__item-link_active" : "header__item-link subheader__item-link")}
+        to='/auto'>
           Авто напрокат
-        </Link>
+        </NavLink>
       </li>
       <li className="header__item subheader__item">
-        <Link className="header__item-link subheader__item-link" to='/'>
+        <NavLink
+        className={({ isActive }) => (isActive ? "header__item-link subheader__item-link header__item-link_active subheader__item-link_pt" : "header__item-link subheader__item-link subheader__item-link_pt")}
+        to='/add'>
           <button className="subheader__button">+ Разместить объявление</button>
-        </Link>
+        </NavLink>
       </li>
     </ul>
   );

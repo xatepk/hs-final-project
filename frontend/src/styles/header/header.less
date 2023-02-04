@@ -15,8 +15,6 @@
     display: flex;
     flex: 1;
     align-items: center;
-    padding-top: 11px;
-    padding-bottom: 11px;
   }
 
   &__items {
@@ -37,6 +35,8 @@
 
   &__item {
     margin-right: 57px;
+    display: flex;
+    align-items: center;
 
     &:last-of-type {
       margin: 0;
@@ -45,11 +45,26 @@
 
   &__item-link {
     display: flex;
-    align-items: center;
     font-size: 14px;
     line-height: 17px;
     color: #8291A3;
     text-decoration: none;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    border-bottom: 3px solid transparent;
+
+    &_apa {
+      &::after {
+        content: url('../../img/icons/header/loc_ye.svg');
+        margin-left: 15px;
+        width: 12px;
+        height: 15px;
+      }
+    }
+
+    &_active {
+      border-bottom: 3px solid #FFD54F;
+    }
 
     &:hover {
       cursor: pointer;
@@ -66,8 +81,18 @@
       }
     }
 
+    &_before {
+      &::before {
+        content: url('../../img/icons/header/loc.svg');
+        margin-right: 5px;
+        width: 8px;
+        height: 10px;
+      }
+    }
+
     &_purple {
       color: #664EF9;
+      padding-bottom: 11px;
     }
   }
 

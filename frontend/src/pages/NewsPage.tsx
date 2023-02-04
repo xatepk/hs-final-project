@@ -58,6 +58,7 @@ function NewsPage() {
               placeholder="Поиск по статьям"
             />
             <button className="news__search-button" onClick={() => setValue(value)}></button>
+            <div className="news__search_bg"></div>
           </div>
         </div>
 
