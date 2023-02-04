@@ -13,50 +13,6 @@ module.exports.getUsers = (req, res, next) => {
     .catch(next);
 };
 
-// module.exports.getUserById = (req, res, next) => User.findById(req.params.id)
-//   .then((user) => {
-//     if (!user) {
-//       throw new NotFound('Нет пользователя с таким id');
-//     }
-//     res.status(200).send(user);
-//   })
-//   .catch(next);
-
-// module.exports.getUserInfo = (req, res, next) => User.findById(req.user._id)
-//   .then((user) => {
-//     if (!user) {
-//       throw new NotFound('Нет пользователя с таким id');
-//     }
-//     res.status(200).send(user);
-//   })
-//   .catch(next);
-
-// module.exports.updateProfile = (req, res, next) => {
-//   const { name, about } = req.body;
-
-//   return User.findByIdAndUpdate(req.user._id, { name, about }, { new: true })
-//     .then((user) => {
-//       if (!user) {
-//         throw new NotFound('Нет пользователя с таким id');
-//       }
-//       res.status(200).send(user);
-//     })
-//     .catch(next);
-// };
-
-// module.exports.updateAvatar = (req, res, next) => {
-//   const { avatar } = req.body;
-
-//   return User.findByIdAndUpdate(req.user._id, { avatar }, { new: true })
-//     .then((user) => {
-//       if (!user) {
-//         throw new NotFound('Нет пользователя с таким id');
-//       }
-//       res.status(200).send(user);
-//     })
-//     .catch(next);
-// };
-
 module.exports.login = (req, res, next) => {
   const { username, password } = req.body;
 
@@ -74,13 +30,14 @@ module.exports.login = (req, res, next) => {
           throw new Unautorized('Неправильные логин или пароль');
         });
     })
-    .then(({ _id }) => {
+    .then((user) => {
+      const { _id } = user;
       const token = jwt.sign(
         { _id },
         JWT_SECRET,
         { expiresIn: JWT_TTL },
       );
-      res.send({ token });
+      res.send({ token, _id });
     })
     .catch(next);
 };
@@ -97,13 +54,15 @@ module.exports.createUser = (req, res, next) => {
       return bcrypt.hash(password, 10);
     })
     .then((hash) => User.create({ email, password: hash, username }))
-    .then(({ _id }) => {
+    .then((user) => {
+      const { _id } = user;
       const token = jwt.sign(
         { _id },
         JWT_SECRET,
         { expiresIn: JWT_TTL },
       );
-      res.send({ token, message: `Пользователь создан` });
+      res.send({ token, _id, message: `Пользователь создан` });
       })
     .catch(next);
 };
+

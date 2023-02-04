@@ -48,5 +48,7 @@ export interface IAuth {
 }
 
 export interface IAuthResponse {
-  token: string
+  token: string,
+  _id: string
 }
+

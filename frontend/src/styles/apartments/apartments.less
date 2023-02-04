@@ -275,12 +275,22 @@
     }
 
     &::after {
+      width: 15px;
+      height: 15px;
       content: url('../../img/icons/apartments/like.svg');
     }
 
     &:hover {
       cursor: pointer;
       opacity: .8;
+    }
+
+    &_active {
+      &::after {
+        width: 15px;
+        height: 15px;
+        content: url('../../img/icons/apartments/red-heart-icon.svg');
+      }
     }
   }
 

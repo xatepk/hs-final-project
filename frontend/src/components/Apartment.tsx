@@ -2,6 +2,8 @@ import { IApartments } from "../models/models";
 import Carousel from 'react-bootstrap/Carousel';
 import Contacts from "./Contacts";
 import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { fetchSaveApartment } from "../store/actions/apartmentsActions";
 
 interface ApartmentProps {
   apartment: IApartments;
@@ -11,7 +13,17 @@ interface ApartmentProps {
 
 function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
 
+  const dispatch = useAppDispatch();
+  const { access } = useAppSelector(state => state.auth);
+
   const [active, setActive] = useState(false);
+  const [like, setLike] = useState(false);
+
+  const likeHandler = () => {
+    setLike(!like);
+    if (access) dispatch(fetchSaveApartment(apartment._id, access));
+  }
+
 
   return (
     <li className={`apartments__item ${sortList ? 'apartments__item_row' : ''}`} >
@@ -58,7 +70,9 @@ function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
 
         <p className="apartments__item-desc">{apartment.description}</p>
         <div className={`apartments__buttons ${sortList ? 'apartments__buttons_list' : ''}`} >
-          {!sortList && !mainpage && <button className="apartments__like"></button>}
+          {!sortList && !mainpage &&
+            <button onClick={likeHandler}
+              className={`apartments__like ${like && " apartments__like_active"}`} />}
 
           <button className="apartments__contacts" onClick={() => setActive(!active)} >
             <span className="apartments__contacts-desc">Контакты</span>
@@ -66,7 +80,11 @@ function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
           </button>
 
 
-          {sortList && <button className="apartments__like apartments__like_list"><span className="apartments__like_red">В закладки</span></button>}
+          {sortList &&
+            <button onClick={likeHandler}
+              className={`apartments__like apartments__like_list ${like && " apartments__like_active"}`} >
+              <span className="apartments__like_red">В закладки</span>
+            </button>}
           <button className="apartments__more">Подробнее</button>
         </div>
       </div>

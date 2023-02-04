@@ -7,10 +7,10 @@ export const register = (data: IAuth) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.post<IAuthResponse>(`signup`, data);
-      console.log(response);
       dispatch(authSlice.actions.loginSuccess({
         access: response.data.token,
-        username: data.username
+        username: data.username,
+        id: response.data._id
       }))
     } catch (e) {
       console.log('Error register', e)
@@ -21,10 +21,12 @@ export const register = (data: IAuth) => {
 export const autorization = (data: IAuth) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.post<IAuthResponse>(`signin`, data)
+      const response = await axios.post<IAuthResponse>(`signin`, data);
+      console.log(response);
       dispatch(authSlice.actions.loginSuccess({
         access: response.data.token,
-        username: data.username
+        username: data.username,
+        id: response.data._id
       }))
     } catch (e) {
       console.log('Error Login', e)

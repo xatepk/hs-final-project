@@ -20,27 +20,26 @@ module.exports.getCities = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.likeApartments = (req, res, next) => Apartments.findByIdAndUpdate(
-  req.params.apartmentsId,
-  { $addToSet: { likes: req.user._id } },
-  { new: true },
-)
-  .orFail(new NotFound('Нет карточки с таким id'))
-  .then((apartment) => {
-    res.status(200).send(apartment);
-  })
-  .catch(next);
+module.exports.saveApartments = (req, res, next) => Apartments.findById(req.params.apartmentsId, (err, data) => {
+  if (err) {
+    new NotFound('Нет карточки с таким id')
+  }
+  else {
+    const { likes } = data;
+    const methodToUse = likes.includes(req.user._id) ? '$pull' : '$addToSet';
+    Apartments.findByIdAndUpdate(
+      req.params.apartmentsId,
+      { [methodToUse]: { likes: req.user._id } },
+      { new: true },
+    )
+      .orFail(new NotFound('Нет карточки с таким id'))
+      .then((apartment) => {
+        res.status(200).send(apartment);
+      })
+      .catch(next);
+  }
+})
 
-module.exports.dislikeApartments = (req, res, next) => Apartments.findByIdAndUpdate(
-  req.params.apartmentsId,
-  { $pull: { likes: req.user._id } },
-  { new: true },
-)
-  .orFail(new NotFound('Нет карточки с таким id'))
-  .then((apartment) => {
-    res.status(200).send(apartment);
-  })
-  .catch(next);
 
 module.exports.deleteApartments = (req, res, next) => Apartments.deleteMany({})
   .orFail(new NotFound('Карточки не найдены'))
@@ -73,10 +72,20 @@ module.exports.createApartment = (req, res, next) => {
 
 module.exports.getApartmentsByCity = (req, res, next) => {
   const city = req.params.city;
-  Apartments.find({city: city})
-  .orFail(() => {
-    throw new NotFound('Квартиры не найдены');
-  })
-  .then((apartments) => res.status(200).send(apartments))
-  .catch(next);
+  Apartments.find({ city: city })
+    .orFail(() => {
+      throw new NotFound('Квартиры не найдены');
+    })
+    .then((apartments) => res.status(200).send(apartments))
+    .catch(next);
 }
+
+module.exports.getApartmentById = (req, res, next) => Apartments.findById(req.params._id)
+  .then((apartment) => {
+    console.log(apartment);
+    if (!apartment) {
+      throw new NotFound('Нет квартиры с таким id');
+    }
+    res.status(200).send(apartment);
+  })
+  .catch(next);

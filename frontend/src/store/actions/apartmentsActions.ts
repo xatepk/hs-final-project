@@ -42,3 +42,22 @@ export const fetchCities = () => {
     }
   }
 }
+
+export const fetchSaveApartment = (id:string, token:string) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` }
+  };
+
+  return async (dispatch: AppDispatch) => {
+    try {
+      dispatch(apartmentsSlice.actions.fetching());
+      const response = await axios.patch<IApartments>(`/apartments/${id}/likes`,{}, config);
+      dispatch(apartmentsSlice.actions.updateLikedSuccess(response.data));
+
+    } catch (err) {
+      dispatch(apartmentsSlice.actions.fetchError(err as Error));
+    }
+  }
+}
+
+
