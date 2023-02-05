@@ -22,7 +22,6 @@ export const fetchNewsById = (id: string) => {
     try {
       dispatch(newsDetailsSlice.actions.newsFetching());
       const response = await axios.get<INews>(`news/${id}`);
-      console.log(response.data);
       dispatch(newsDetailsSlice.actions.newsFetchingSuccess(response.data));
 
 

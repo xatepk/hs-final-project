@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import NewsDetails from "../components/NewsDetails";
+import NewsReadMore from "../components/NewsReadMore";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { fetchNewsById } from "../store/actions/newsActions";
 
@@ -22,6 +23,7 @@ function NewsDetailPage() {
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
       <NewsDetails news={news} />
+      <NewsReadMore />
       <Footer />
     </>
   );
