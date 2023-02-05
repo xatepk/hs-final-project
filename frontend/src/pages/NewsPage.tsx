@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import Breadcrumb from "../components/Breadcrumb";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import NewsCard from "../components/NewsCard";
@@ -47,6 +48,7 @@ function NewsPage() {
       {error && <p>{error}</p>}
       <Header />
       <div className="news">
+        <Breadcrumb title="Новости" link="/news" />
         <div className="news__header">
           <p className="news__header-title">Новости</p>
           <div className="news__search">
