@@ -139,17 +139,28 @@
   &__filter-select {
     display: flex;
     align-items: center;
-    padding: 9px 69px 11px 12px;
+    width: 150px;
+    padding: 6px 0 8px 9px;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
     color: #686868;
-    border: none;
+    border: 3px solid transparent;
     background: #F8F8F8;
     border-radius: 20px;
+    background-image: url('../../img/icons/mainpage/select.svg');
+    background-repeat: no-repeat, repeat;
+    background-position: right 5px top 50%, 0 0;
+    background-size: auto, 100%;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+
+    &:focus {
+      border: 3px solid rgba(102, 78, 249, 0.8);
+      color: #222;
+      outline: none;
+    }
 
 
   }
@@ -157,14 +168,6 @@
   &__main-option {
     display: flex;
     align-items: center;
-
-    &::after {
-      width: 18px;
-      height: 18px;
-      content: url('../../img/icons/mainpage/select.svg');
-      margin-left: 43px;
-      margin-right: 8px;
-    }
   }
 
   &__filter-label {
@@ -476,10 +479,6 @@
     &:after {
       width: 61px;
       height: 61px;
-      // position: absolute;
-      // z-index: 99;
-      // right: 10px;
-      // bottom: 10px;
       content: url('../../img/icons/mainpage/ell_about.svg');
 
     }
@@ -628,7 +627,7 @@
 
   &__minsk-select {
     width: 185px;
-    padding: 12px 10px 17px;
+    padding: 9px 7px 14px;
     border: none;
     background: #FFFFFF;
     box-shadow: 0px 10px 20px rgba(0, 96, 206, 0.1);
@@ -637,6 +636,20 @@
     font-size: 14px;
     line-height: 17px;
     color: #686868;
+    background-image: url('../../img/icons/mainpage/select.svg');
+    background-repeat: no-repeat, repeat;
+    background-position: right 5px top 50%, 0 0;
+    background-size: auto, 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 3px solid transparent;
+
+    &:focus {
+      border: 3px solid rgba(102, 78, 249, 0.8);
+      color: #222;
+      outline: none;
+    }
 
     &_ml {
       margin-left: auto;

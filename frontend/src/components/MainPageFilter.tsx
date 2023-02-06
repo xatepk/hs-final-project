@@ -5,21 +5,20 @@ interface CitiesProps {
 }
 
 function MainPageFilter({ cities }: CitiesProps) {
-
   return (
     <div className="mainpage__filter">
       <ul className="mainpage__filter-list">
         <li className="mainpage__filter-item">
           <h3 className="mainpage__filter-item-title">Город</h3>
-          <select name="city" className="mainpage__filter-select">
-            <option disabled selected value="" className="mainpage__main-option">Выберите</option>
+          <select name="city" className="mainpage__filter-select" defaultValue="0" >
+            <option disabled value='0' className="mainpage__main-option">Выберите</option>
             {cities.map((city) => <option key={city._id}>{city.city}</option>)}
           </select>
         </li>
         <li className="mainpage__filter-item">
           <h3 className="mainpage__filter-item-title">Комнаты</h3>
-          <select name="bedroom" className="mainpage__filter-select">
-            <option disabled selected value="">Выберите</option>
+          <select name="bedroom" className="mainpage__filter-select" defaultValue="0">
+            <option disabled value="0">Выберите</option>
           </select>
         </li>
         <li className="mainpage__filter-item">

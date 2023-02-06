@@ -39,11 +39,11 @@ function MainPageApartmentsMinsk() {
         <p className="mainpage__minsk-desc">КВАРТИРЫ НА СУТКИ</p>
         <div className="mainpage__minsk-filter">
           <h2 className="mainpage__minsk-title">Аренда квартир в Минске</h2>
-          <select name="underground" className="mainpage__minsk-select mainpage__minsk-select_ml">
-            <option disabled selected value="" className="mainpage__minsk-option">Метро</option>
+          <select name="underground" className="mainpage__minsk-select mainpage__minsk-select_ml" defaultValue="">
+            <option disabled value="" className="mainpage__minsk-option">Метро</option>
           </select>
-          <select name="area" className="mainpage__minsk-select">
-            <option disabled selected value="" className="mainpage__minsk-option">Район</option>
+          <select name="area" className="mainpage__minsk-select" defaultValue="">
+            <option disabled value="" className="mainpage__minsk-option">Район</option>
           </select>
         </div>
 

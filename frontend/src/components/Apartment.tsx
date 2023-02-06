@@ -33,7 +33,7 @@ function Apartment({ apartment, sortList, mainpage }: ApartmentProps) {
       <Carousel interval={null} fade>
         {apartment.imageUrls.length > 0 &&
           apartment.imageUrls.map((imageUrl) =>
-            <Carousel.Item>
+            <Carousel.Item key={imageUrl}>
               <img className={`apartments__item-image ${sortList ? 'apartments__item-image_list' : ''}`} src={imageUrl} alt="фото квартиры" />
               <p className="apartments__gold">Gold</p>
             </Carousel.Item>)}
