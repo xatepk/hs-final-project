@@ -16,7 +16,8 @@ export interface IApartments {
   location: string,
   area: string,
   underground: string,
-  imageUrls: string[]
+  imageUrls: string[],
+  city: string
 }
 
 export interface ICities {
@@ -50,5 +51,12 @@ export interface IAuth {
 export interface IAuthResponse {
   token: string,
   _id: string
+}
+
+export interface IFilter {
+  city: string,
+  bedroom: number,
+  priceMin: number,
+  priceMax: number
 }
 

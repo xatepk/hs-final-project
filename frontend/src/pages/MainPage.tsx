@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchCities } from "../store/actions/apartmentsActions";
+import { fetchApartments, fetchCities } from "../store/actions/apartmentsActions";
 import MainPageNavigation from "../components/MainPageNavigation";
 import MainPageAboutRent from "../components/MainPageAboutRent";
 import MainPageRentGeo from "../components/MainPageRentGeo";
@@ -16,6 +16,7 @@ function MainPage() {
   const { loading, error, cities } = useAppSelector(state => state.cities);
 
   useEffect(() => {
+    dispatch(fetchApartments());
     dispatch(fetchCities());
   }, [dispatch]);
 
