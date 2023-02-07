@@ -71,6 +71,11 @@
     padding-right: 34px;
     background: #FFFFFF;
     border-radius: 0 10px 10px 10px;
+
+    &_width {
+      width: 100%;
+      box-shadow: 0px 20px 40px rgba(39, 95, 158, 0.08);
+    }
   }
 
   &__filter-list {
@@ -78,6 +83,18 @@
     align-items: center;
     padding: 0;
     margin: 0;
+
+  }
+
+  &__filter-shadow {
+    display: contents;
+
+    &_width {
+      display: flex;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
   }
 
   &__filter-item {
@@ -88,6 +105,12 @@
     font-size: 14px;
     line-height: 17px;
     color: #1E2123;
+
+    &_flex {
+      display: flex;
+      align-items: center;
+      padding: 0 25px;
+    }
 
     &:last-of-type {
       border: none;
@@ -134,6 +157,12 @@
     line-height: 17px;
     color: #BDBDBD;
     margin-bottom: 11px;
+
+    &_purple {
+      margin-bottom: 0;
+      color: #664EF9;
+      margin-right: 20px;
+    }
   }
 
   &__filter-select {
@@ -226,6 +255,33 @@
       height: 19px;
       content: url('../../img/icons/mainpage/str4.svg');
       margin-left: 5px;
+    }
+
+    &_purple {
+      font-weight: 600;
+      color: #FFFFFF;
+      background: #664EF9;
+
+      &:after {
+        content: url('../../img/icons/mainpage/str5.svg');
+      }
+    }
+  }
+
+  &__clear-button {
+    border: none;
+    background: #F8F8F8;
+    border-radius: 22px;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #1E2123;
+    margin-right: 10px;
+    margin-left: 50px;
+
+    &:hover {
+      opacity: .8;
     }
   }
 

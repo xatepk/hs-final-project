@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Pagination from "./Pagination";
 import plural from 'plural-ru';
+import ApartmentsFilter from "./ApartmentsFilter";
 
 interface IApartmentsProps {
   apartments: IApartments[],
@@ -38,6 +39,7 @@ function ApartmentsComponent({ apartments, loading, error }: IApartmentsProps) {
       <Header />
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
+      <ApartmentsFilter cities={[]} />
       {apartments.length > 0 &&
         <section className="apartments">
           <div className="apartments__sort">
