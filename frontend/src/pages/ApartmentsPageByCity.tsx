@@ -13,7 +13,7 @@ function ApartmentsPageByCity() {
 
 
   useEffect(() => {
-    // debugger;
+    debugger;
     if (filter.city) {
       dispatch(apartmentsSlice.actions.apartmentsFilter(filter));
     } else {
@@ -23,7 +23,7 @@ function ApartmentsPageByCity() {
   }, [dispatch, filter, params.city]);
 
   return (
-    <ApartmentsComponent apartments={apartments} error={error} loading={loading} />
+    <ApartmentsComponent apartments={apartments} error={error} loading={loading} city={params.city} />
   );
 }
 

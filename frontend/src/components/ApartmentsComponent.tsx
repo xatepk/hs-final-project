@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import usePagination from "../hooks/usePagination";
 import { IApartments } from "../models/models";
@@ -9,16 +9,21 @@ import Header from "./Header";
 import Pagination from "./Pagination";
 import plural from 'plural-ru';
 import ApartmentsFilter from "./ApartmentsFilter";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { fetchHandbooks } from "../store/actions/apartmentsActions";
 
 interface IApartmentsProps {
   apartments: IApartments[],
   loading: boolean,
   error: string,
+  city?: string
 }
 
-function ApartmentsComponent({ apartments, loading, error }: IApartmentsProps) {
+function ApartmentsComponent({ apartments, loading, error, city }: IApartmentsProps) {
 
+  const dispatch = useAppDispatch();
   const [sortList, setSortList] = useState<boolean>(true);
+  const { rooms } = useAppSelector(state => state.handbook);
 
   const {
     firstContentIndex,
@@ -34,12 +39,16 @@ function ApartmentsComponent({ apartments, loading, error }: IApartmentsProps) {
     count: apartments.length,
   });
 
+  useEffect(() => {
+    dispatch(fetchHandbooks());
+  }, [dispatch])
+
   return (
     <>
-      <Header />
+      <Header city={city} />
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
-      <ApartmentsFilter cities={[]} rooms={[]} />
+      <ApartmentsFilter cities={[]} rooms={rooms} />
       {apartments.length > 0 &&
         <section className="apartments">
           <div className="apartments__sort">

@@ -1,6 +1,6 @@
 import { ChangeEvent, useState, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { ICities, IFilter, IRooms } from "../models/models";
 import { filterSlice } from "../store/slices/filterSlice";
 
@@ -13,10 +13,11 @@ interface CitiesProps {
 function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { city, rooms:bedrooms } = useAppSelector(state => state.filter);
 
   const [filter, setFilter] = useState<IFilter>({
-    city: '',
-    rooms: 0,
+    city: city || '',
+    rooms: bedrooms || 0,
     priceMin: '',
     priceMax: ''
   })
