@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
-import { ICities } from "../models/models";
+import { ICities, IRooms } from "../models/models";
 import ApartmentsFilter from "./ApartmentsFilter";
 
 interface CitiesProps {
   cities: ICities[];
+  rooms: IRooms[];
 }
 
 
-function MainPageNavigation({cities}: CitiesProps) {
+function MainPageNavigation({ cities, rooms }: CitiesProps) {
   return (
     <div className="mainpage__tabs-container">
       <div className="mainpage__block-tabs">
@@ -24,7 +25,7 @@ function MainPageNavigation({cities}: CitiesProps) {
       </div>
 
       <div className="mainpage__tabs-content">
-        <ApartmentsFilter cities={cities} mainpage={true} />
+        <ApartmentsFilter cities={cities} mainpage={true} rooms={rooms} />
       </div>
     </div>
   );

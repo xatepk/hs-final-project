@@ -1,21 +1,22 @@
 import { ChangeEvent, useState, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../hooks/redux";
-import { ICities, IFilter } from "../models/models";
-import { apartmentsSlice } from '../store/slices/apartmentsSlice';
+import { ICities, IFilter, IRooms } from "../models/models";
+import { filterSlice } from "../store/slices/filterSlice";
 
 interface CitiesProps {
   cities: ICities[];
   mainpage?: boolean;
+  rooms: IRooms[]
 }
 
-function ApartmentsFilter({ cities, mainpage }: CitiesProps) {
+function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const [filter, setFilter] = useState<IFilter>({
     city: '',
-    bedroom: 0,
+    rooms: 0,
     priceMin: '',
     priceMax: ''
   })
@@ -27,16 +28,15 @@ function ApartmentsFilter({ cities, mainpage }: CitiesProps) {
   const clearHandler = (event: MouseEvent<HTMLButtonElement>) => {
     setFilter({
       city: '',
-      bedroom: 0,
+      rooms: 0,
       priceMin: '',
       priceMax: ''
     })
   }
 
   const buttonHandler = () => {
-    // debugger;
-    dispatch(apartmentsSlice.actions.apartmentsFilter(filter));
-    if(mainpage) navigate(`/apartments${filter.city ? `/${filter.city}` : ''}`);
+    dispatch(filterSlice.actions.filterSaving(filter));
+    if (mainpage) navigate(`/apartments${filter.city ? `/${filter.city}` : ''}`);
   }
 
   return (
@@ -59,10 +59,11 @@ function ApartmentsFilter({ cities, mainpage }: CitiesProps) {
             <h3 className={`mainpage__filter-item-title
             ${!mainpage && "mainpage__filter-item-title_purple"}`}>
               Комнаты</h3>
-            <select name="bedroom" className="mainpage__filter-select"
-              value={filter.bedroom}
+            <select name="rooms" className="mainpage__filter-select"
+              value={filter.rooms}
               onChange={changeHandler} >
               <option disabled value={0}>Выберите</option>
+              {rooms.map((room) => <option key={room._id}>{room.rooms}</option>)}
             </select>
           </li>
           <li className={`mainpage__filter-item ${!mainpage && "mainpage__filter-item_flex"}`}>
@@ -90,7 +91,7 @@ function ApartmentsFilter({ cities, mainpage }: CitiesProps) {
         {!mainpage && <button className="mainpage__clear-button" onClick={clearHandler}>Очистить</button>}
         <button className={`mainpage__filter-button
             ${!mainpage && "mainpage__filter-button_purple"}`}
-        onClick={buttonHandler}>
+          onClick={buttonHandler}>
           {mainpage ? 'Показать' : 'Показать объекты'}</button>
       </div>
     </div>

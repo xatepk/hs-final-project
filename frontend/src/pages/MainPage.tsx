@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchApartments, fetchCities } from "../store/actions/apartmentsActions";
+import { fetchApartments, fetchHandbooks } from "../store/actions/apartmentsActions";
 import MainPageNavigation from "../components/MainPageNavigation";
 import MainPageAboutRent from "../components/MainPageAboutRent";
 import MainPageRentGeo from "../components/MainPageRentGeo";
@@ -13,11 +13,11 @@ import Footer from "../components/Footer";
 function MainPage() {
 
   const dispatch = useAppDispatch();
-  const { loading, error, cities } = useAppSelector(state => state.cities);
+  const { loading, error, cities, rooms } = useAppSelector(state => state.handbook);
 
   useEffect(() => {
     dispatch(fetchApartments());
-    dispatch(fetchCities());
+    dispatch(fetchHandbooks());
   }, [dispatch]);
 
   return (
@@ -28,7 +28,7 @@ function MainPage() {
         {loading && <p>Loading...</p>}
         <div className="mainpage__filter-block">
           <h1 className="mainpage__title">Sdaem.by - у нас живут <span className="mainpage__title_yellow">ваши объявления</span></h1>
-          <MainPageNavigation cities={cities} />
+          <MainPageNavigation cities={cities} rooms={rooms} />
         </div>
 
         <div className="mainpage__rent">

@@ -25,6 +25,11 @@ export interface ICities {
   city: string
 }
 
+export interface IRooms {
+  _id: string,
+  rooms: number
+}
+
 export interface UsePaginationProps {
   contentPerPage: number,
   count: number,
@@ -55,7 +60,7 @@ export interface IAuthResponse {
 
 export interface IFilter {
   city: string,
-  bedroom: number,
+  rooms: number,
   priceMin: string,
   priceMax: string
 }

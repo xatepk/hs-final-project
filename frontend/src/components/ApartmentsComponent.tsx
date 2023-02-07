@@ -39,7 +39,7 @@ function ApartmentsComponent({ apartments, loading, error }: IApartmentsProps) {
       <Header />
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
-      <ApartmentsFilter cities={[]} />
+      <ApartmentsFilter cities={[]} rooms={[]} />
       {apartments.length > 0 &&
         <section className="apartments">
           <div className="apartments__sort">

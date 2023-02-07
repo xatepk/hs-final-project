@@ -1,8 +1,8 @@
 import { AppDispatch } from "..";
 import axios from "../../axios";
-import { IApartments, ICities } from "../../models/models";
+import { IApartments, ICities, IRooms } from "../../models/models";
 import { apartmentsSlice } from "../slices/apartmentsSlice";
-import { citiesSlice } from "../slices/citiesSlice";
+import { handbookSlice } from "../slices/handbookSlice";
 
 export const fetchApartments = () => {
   return async (dispatch: AppDispatch) => {
@@ -30,18 +30,24 @@ export const fetchApartmentsByCity = (city: string) => {
   }
 }
 
-export const fetchCities = () => {
+export const fetchHandbooks = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      dispatch(citiesSlice.actions.fetching());
-      const response = await axios.get<ICities[]>('cities');
-      dispatch(citiesSlice.actions.fetchSuccess(response.data));
-
-    } catch (err) {
-      dispatch(citiesSlice.actions.fetchError(err as Error));
+      dispatch(handbookSlice.actions.handbookFetching())
+      const response = await Promise.all([
+        axios.get<ICities[]>('cities'),
+        axios.get<IRooms[]>('rooms'),
+      ])
+      dispatch(handbookSlice.actions.handbookFetchingSuccess([
+        response[0].data,
+        response[1].data,
+      ]))
+    } catch (e) {
+      dispatch(handbookSlice.actions.handbookFetchingError(e as Error))
     }
   }
 }
+
 
 export const fetchSaveApartment = (id:string, token:string) => {
   const config = {
