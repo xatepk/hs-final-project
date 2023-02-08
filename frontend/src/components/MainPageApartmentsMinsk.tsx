@@ -9,7 +9,7 @@ import Pagination from "./Pagination";
 function MainPageApartmentsMinsk() {
 
   const dispatch = useAppDispatch();
-  const { error, loading, apartments } = useAppSelector(state => state.apartments);
+  const { apartments } = useAppSelector(state => state.apartments);
 
   const {
     firstContentIndex,
@@ -32,8 +32,6 @@ function MainPageApartmentsMinsk() {
 
   return (
     <>
-      {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
       <div className="mainpage__rent-minsk">
         <div className="mainpage__minsk-bg"></div>
         <p className="mainpage__minsk-desc">КВАРТИРЫ НА СУТКИ</p>

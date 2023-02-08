@@ -9,7 +9,6 @@ interface UsePaginationProps {
 }
 
 function Pagination({ page, totalPages, gaps, setPage, prevPage, nextPage, visibility }: UsePaginationProps) {
-  console.log(gaps);
   return (
     <div className={`pagination ${visibility && "pagination_center"}`}>
       {visibility && <button

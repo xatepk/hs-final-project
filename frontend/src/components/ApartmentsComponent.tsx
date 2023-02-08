@@ -14,6 +14,7 @@ import { fetchHandbooks } from "../store/actions/apartmentsActions";
 import Breadcrumb from "./Breadcrumb";
 import RecommendedFilters from "./RecommendedFilters";
 import ShareNetworks from "./ShareNetworks";
+import ApartmentsSort from "./ApartmentsSort";
 
 interface IApartmentsProps {
   apartments: IApartments[],
@@ -65,7 +66,7 @@ function ApartmentsComponent({ apartments, loading, error, city }: IApartmentsPr
         <ApartmentsFilter cities={[]} rooms={rooms} />
         <div className="apartments__content">
           <div className="apartments__sort">
-            <p>ПО УМОЛЧАНИЮ</p>
+            <ApartmentsSort />
             <button
               className={`apartments__sort-list ${sortList ? 'apartments__sort-list_is-active' : ''}`}
               onClick={(() => setSortList(true))}>Список</button>
