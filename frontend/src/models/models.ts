@@ -60,8 +60,9 @@ export interface IAuthResponse {
 
 export interface IFilter {
   city: string,
-  rooms: number,
+  rooms: string,
   priceMin: number,
-  priceMax: number
+  priceMax: number,
+  area: ''
 }
 

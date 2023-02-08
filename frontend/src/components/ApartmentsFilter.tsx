@@ -19,21 +19,23 @@ function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
 
   const [filter, setFilter] = useState<IFilter>({
     city: city || '',
-    rooms: bedrooms || 0,
+    rooms: bedrooms || '',
     priceMin: 0,
-    priceMax: 0
+    priceMax: 0,
+    area: ''
   })
 
   const changeHandler = (event: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
     setFilter(prev => ({ ...prev, [event.target.name]: event.target.value }));
   }
 
-  const clearHandler = (event: MouseEvent<HTMLButtonElement>) => {
+  const clearHandler = () => {
     setFilter({
       city: '',
-      rooms: 0,
+      rooms: '',
       priceMin: 0,
-      priceMax: 0
+      priceMax: 0,
+      area: ''
     })
   }
 
@@ -42,8 +44,8 @@ function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
     if (filter.city) {
       data = data.filter(i => i.city.includes(filter.city))
     };
-    if (filter.rooms > 0) {
-      data = data.filter(i => i.rooms === Number(filter.rooms));
+    if (filter.rooms) {
+      data = data.filter(i => i.rooms === Number(filter.rooms.slice(0, 1)));
     };
     if (filter.priceMin > 0) {
       data = data.filter(i => i.price >= Number(filter.priceMin));
@@ -54,8 +56,8 @@ function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
     return data;
   }
 
-  const buttonHandler = async () => {
-    await dispatch(filterSlice.actions.filterSaving(filter));
+  const buttonHandler = () => {
+    dispatch(filterSlice.actions.filterSaving(filter));
 
     const newApartments = filterApartments();
     dispatch(apartmentsSlice.actions.apartmentsFilter(newApartments));
@@ -85,8 +87,8 @@ function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
             <select name="rooms" className="mainpage__filter-select"
               value={filter.rooms}
               onChange={changeHandler} >
-              <option disabled value={0}>Выберите</option>
-              {rooms.map((room) => <option key={room._id}>{room.rooms}</option>)}
+              <option disabled value=''>Выберите</option>
+              {rooms.map((room) => <option key={room._id}>{room.rooms} комн.</option>)}
             </select>
           </li>
           <li className={`mainpage__filter-item ${!mainpage && "mainpage__filter-item_flex"}`}>

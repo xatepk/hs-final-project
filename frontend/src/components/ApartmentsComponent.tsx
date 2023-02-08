@@ -11,6 +11,9 @@ import plural from 'plural-ru';
 import ApartmentsFilter from "./ApartmentsFilter";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { fetchHandbooks } from "../store/actions/apartmentsActions";
+import Breadcrumb from "./Breadcrumb";
+import RecommendedFilters from "./RecommendedFilters";
+import ShareNetworks from "./ShareNetworks";
 
 interface IApartmentsProps {
   apartments: IApartments[],
@@ -48,9 +51,19 @@ function ApartmentsComponent({ apartments, loading, error, city }: IApartmentsPr
       <Header city={city} />
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
-      <ApartmentsFilter cities={[]} rooms={rooms} />
-      {apartments.length > 0 &&
-        <section className="apartments">
+
+
+      <section className="apartments">
+        <div className="apartments__header">
+          <Breadcrumb
+            title={city ? `Квартиры в ${city}` : 'Квартиры на сутки'}
+            link={city ? `/apartments/${city}` : `/apartments`}
+          />
+          <p className="apartments__title">{`Аренда квартир на сутки${city ? ` в ${city}` : ''}`}</p>
+          <RecommendedFilters />
+        </div>
+        <ApartmentsFilter cities={[]} rooms={rooms} />
+        <div className="apartments__content">
           <div className="apartments__sort">
             <p>ПО УМОЛЧАНИЮ</p>
             <button
@@ -64,14 +77,19 @@ function ApartmentsComponent({ apartments, loading, error, city }: IApartmentsPr
           <p className="apartments__result">Найдено  {plural(apartments.length, '%d результат', '%d результата', '%d результатов')} </p>
           <ul className={`apartments__list ${sortList ? 'apartments__list_list' : ''}`}>
 
-            {apartments
+            {apartments.length && apartments
               .slice(firstContentIndex, lastContentIndex)
               .map((apartment) => <Apartment key={apartment._id + '1'} apartment={apartment} sortList={sortList} mainpage={false} />)
             }
-
           </ul>
-        </section>}
-      {apartments.length > 0 && <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} visibility={false} />}
+        </div>
+      </section>
+      <div className="apartments__footer">
+        {apartments.length > 0 &&
+        <Pagination page={page} gaps={gaps} setPage={setPage} totalPages={totalPages} nextPage={nextPage} prevPage={prevPage} visibility={false} />}
+        <ShareNetworks />
+      </div>
+
       <ApartmentsLocation />
       <Footer />
     </>

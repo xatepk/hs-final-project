@@ -9,6 +9,7 @@ interface UsePaginationProps {
 }
 
 function Pagination({ page, totalPages, gaps, setPage, prevPage, nextPage, visibility }: UsePaginationProps) {
+  console.log(gaps);
   return (
     <div className={`pagination ${visibility && "pagination_center"}`}>
       {visibility && <button
@@ -33,21 +34,24 @@ function Pagination({ page, totalPages, gaps, setPage, prevPage, nextPage, visib
             </li>
           ))}
           {gaps.after.length > 1 ? <span className="pagination__dotes">...</span> : null}
+          {gaps.after.length > 0 &&
           <li
             onClick={() => setPage(totalPages)}
-            className={`pagination__item ${page === totalPages && "pagination__item_disabled"}`}
+          className={`pagination__item ${page === totalPages && "pagination__item_disabled"}`}
           >
-            {totalPages}
-          </li>
-        </ul>}
-      {visibility && <button
-        onClick={nextPage}
-        className={`pagination__button ${page === totalPages && "pagination__button_disabled"} pagination__button_rigth`}
-      >
-        &gt;
-      </button>}
+          {totalPages}
+        </li>}
+    </ul>}
+{
+  visibility && <button
+    onClick={nextPage}
+    className={`pagination__button ${page === totalPages && "pagination__button_disabled"} pagination__button_rigth`}
+  >
+    &gt;
+  </button>
+}
 
-    </div>
+    </div >
 
   );
 }

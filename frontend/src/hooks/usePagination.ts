@@ -58,6 +58,9 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
         after = pagesInBetween.slice(currentLocation + 3);
       }
 
+    } else if (pageCount === 2) {
+      before = [1]
+      paginationGroup = [2]
     }
     setGaps({ paginationGroup, before, after });
   }, [page, pagesInBetween, pageCount]);

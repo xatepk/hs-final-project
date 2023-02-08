@@ -3,16 +3,18 @@ import { IFilter } from "../../models/models";
 
 interface FilterState {
   city: string,
-  rooms: number,
+  rooms: string,
   priceMin: number,
-  priceMax: number
+  priceMax: number,
+  area: string
 }
 
 const initialState: FilterState = {
   city: '',
-  rooms: 0,
+  rooms: '',
   priceMin: 0,
-  priceMax: 0
+  priceMax: 0,
+  area: ''
 }
 
 export const filterSlice = createSlice({
@@ -24,6 +26,7 @@ export const filterSlice = createSlice({
       state.rooms = action.payload.rooms
       state.priceMin = action.payload.priceMin
       state.priceMax = action.payload.priceMax
+      state.area = action.payload.area
     },
   }
 })

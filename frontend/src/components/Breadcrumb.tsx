@@ -7,6 +7,7 @@ interface IBreadcrumbProps {
 }
 
 function Breadcrumb({ title, link, item }: IBreadcrumbProps) {
+ 
   return (
     <nav>
       <ul className="breadcrumb">

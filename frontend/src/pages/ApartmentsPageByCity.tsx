@@ -12,7 +12,8 @@ function ApartmentsPageByCity() {
 
 
   useEffect(() => {
-    if (!filter.city) dispatch(fetchApartmentsByCity(params.city || ''));
+    if (!filter.city && !filter.rooms && !filter.priceMax && !filter.priceMin)
+    dispatch(fetchApartmentsByCity(params.city || ''));
 
   }, [dispatch, filter, params.city]);
 

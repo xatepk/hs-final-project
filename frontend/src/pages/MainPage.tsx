@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 function MainPage() {
 
   const dispatch = useAppDispatch();
-  const { loading, error, cities, rooms } = useAppSelector(state => state.handbook);
+  const { cities, rooms } = useAppSelector(state => state.handbook);
 
   useEffect(() => {
     dispatch(fetchApartments());
@@ -24,8 +24,6 @@ function MainPage() {
     <>
       <Header />
       <section className="mainpage">
-        {error && <p>{error}</p>}
-        {loading && <p>Loading...</p>}
         <div className="mainpage__filter-block">
           <h1 className="mainpage__title">Sdaem.by - у нас живут <span className="mainpage__title_yellow">ваши объявления</span></h1>
           <MainPageNavigation cities={cities} rooms={rooms} />
