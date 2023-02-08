@@ -1,8 +1,9 @@
 import { ChangeEvent, useState, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { ICities, IFilter, IRooms } from "../models/models";
+import { IApartments, ICities, IFilter, IRooms } from "../models/models";
 import { filterSlice } from "../store/slices/filterSlice";
+import { apartmentsSlice } from '../store/slices/apartmentsSlice';
 
 interface CitiesProps {
   cities: ICities[];
@@ -14,12 +15,13 @@ function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { city, rooms:bedrooms } = useAppSelector(state => state.filter);
+  const { apartmentsContainer } = useAppSelector(state => state.apartments);
 
   const [filter, setFilter] = useState<IFilter>({
     city: city || '',
     rooms: bedrooms || 0,
-    priceMin: '',
-    priceMax: ''
+    priceMin: 0,
+    priceMax: 0
   })
 
   const changeHandler = (event: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
@@ -30,13 +32,33 @@ function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
     setFilter({
       city: '',
       rooms: 0,
-      priceMin: '',
-      priceMax: ''
+      priceMin: 0,
+      priceMax: 0
     })
   }
 
-  const buttonHandler = () => {
-    dispatch(filterSlice.actions.filterSaving(filter));
+  const filterApartments = ():IApartments[] => {
+    let data = apartmentsContainer;
+    if (filter.city) {
+      data = data.filter(i => i.city.includes(filter.city))
+    };
+    if (filter.rooms > 0) {
+      data = data.filter(i => i.rooms === Number(filter.rooms));
+    };
+    if (filter.priceMin > 0) {
+      data = data.filter(i => i.price >= Number(filter.priceMin));
+    }
+    if (filter.priceMax > 0) {
+      data = data.filter(i => i.price <= Number(filter.priceMax));
+    }
+    return data;
+  }
+
+  const buttonHandler = async () => {
+    await dispatch(filterSlice.actions.filterSaving(filter));
+
+    const newApartments = filterApartments();
+    dispatch(apartmentsSlice.actions.apartmentsFilter(newApartments));
     if (mainpage) navigate(`/apartments${filter.city ? `/${filter.city}` : ''}`);
   }
 

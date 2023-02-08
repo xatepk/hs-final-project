@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { fetchApartmentsByCity } from "../store/actions/apartmentsActions";
 import ApartmentsComponent from "../components/ApartmentsComponent";
 import { useParams } from "react-router-dom";
-import { apartmentsSlice } from '../store/slices/apartmentsSlice';
 
 function ApartmentsPageByCity() {
   const dispatch = useAppDispatch();
@@ -13,12 +12,7 @@ function ApartmentsPageByCity() {
 
 
   useEffect(() => {
-    debugger;
-    if (filter.city) {
-      dispatch(apartmentsSlice.actions.apartmentsFilter(filter));
-    } else {
-      dispatch(fetchApartmentsByCity(params.city || ''));
-    }
+    if (!filter.city) dispatch(fetchApartmentsByCity(params.city || ''));
 
   }, [dispatch, filter, params.city]);
 

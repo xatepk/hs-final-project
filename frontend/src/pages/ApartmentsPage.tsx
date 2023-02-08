@@ -11,9 +11,7 @@ function ApartmentsPage() {
 
 
   useEffect(() => {
-    if (filter.rooms || filter.priceMax || filter.priceMin) {
-      dispatch(apartmentsSlice.actions.apartmentsFilter(filter));
-    } else {
+    if (!filter.rooms && !filter.priceMax && !filter.priceMin) {
       dispatch(fetchApartments());
     }
   }, [dispatch, filter]);

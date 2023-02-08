@@ -7,7 +7,7 @@ interface Gap {
   after: number[];
 }
 const usePagination: UsePagination = ({ contentPerPage, count }) => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
 
   const [gaps, setGaps] = useState<Gap>({
     before: [],

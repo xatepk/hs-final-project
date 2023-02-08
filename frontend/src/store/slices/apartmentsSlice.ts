@@ -48,12 +48,8 @@ export const apartmentsSlice = createSlice({
       }
     },
 
-    apartmentsFilter(state, action: PayloadAction<IFilter>) {
-      state.apartments = state.apartmentsContainer
-      .filter(i => i.city.includes(action.payload.city))
-      .filter(i => i.rooms.toString().includes(action.payload.rooms.toString()))
-
-
+    apartmentsFilter(state, action: PayloadAction<IApartments[]>) {
+      state.apartments = action.payload;
     }
   }
 })

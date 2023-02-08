@@ -4,15 +4,15 @@ import { IFilter } from "../../models/models";
 interface FilterState {
   city: string,
   rooms: number,
-  priceMin: string,
-  priceMax: string
+  priceMin: number,
+  priceMax: number
 }
 
 const initialState: FilterState = {
   city: '',
   rooms: 0,
-  priceMin: '',
-  priceMax: ''
+  priceMin: 0,
+  priceMax: 0
 }
 
 export const filterSlice = createSlice({
