@@ -1,6 +1,7 @@
 const { NotFound } = require('../errors');
 const Apartments = require('../models/apartments');
 const City = require('../models/city');
+const Rooms = require('../models/rooms');
 
 module.exports.getApartments = (req, res, next) => {
   Apartments.find({})
@@ -15,6 +16,15 @@ module.exports.getCities = (req, res, next) => {
   City.find({})
     .orFail(() => {
       throw new NotFound('Города не найдены');
+    })
+    .then((apartments) => res.status(200).send(apartments))
+    .catch(next);
+};
+
+module.exports.getRooms = (req, res, next) => {
+  Rooms.find({})
+    .orFail(() => {
+      throw new NotFound('Комнаты не найдены');
     })
     .then((apartments) => res.status(200).send(apartments))
     .catch(next);
@@ -42,7 +52,7 @@ module.exports.saveApartments = (req, res, next) => Apartments.findById(req.para
 
 module.exports.getSavedApartments = (req, res, next) => {
   Apartments.find(
-    {likes: req.user._id}
+    { likes: req.user._id }
   )
     .orFail(() => {
       throw new NotFound('Квартиры не найдены');
@@ -64,6 +74,12 @@ module.exports.deleteCities = (req, res, next) => City.deleteMany({})
   )
   .catch((next));
 
+module.exports.deleteRooms = (req, res, next) => Rooms.deleteMany({})
+  .orFail(new NotFound('Комнаты не найдены'))
+  .then(() => res.status(200).send({ message: 'Города удалены!' })
+  )
+  .catch((next));
+
 module.exports.createApartment = (req, res, next) => {
   const { imageUrls, underground, area, location, city, price, likes, rooms, description } = req.body;
   Apartments.create({ imageUrls, underground, area, location, city, price, likes, rooms, description })
@@ -76,7 +92,9 @@ module.exports.createApartment = (req, res, next) => {
     .catch(next);
 
   City.findOneOrCreate({ city: city }, (err, page) => {
-    // ... code
+    console.log(page)
+  })
+  Rooms.findOneOrCreate({ rooms: rooms }, (err, page) => {
     console.log(page)
   })
 };
