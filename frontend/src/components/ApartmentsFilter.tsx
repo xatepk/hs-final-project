@@ -40,7 +40,7 @@ function ApartmentsFilter({ cities, mainpage, rooms }: CitiesProps) {
   }
 
   const filterApartments = ():IApartments[] => {
-    let data = apartmentsContainer;
+    let data = [...apartmentsContainer];
     if (filter.city) {
       data = data.filter(i => i.city.includes(filter.city))
     };

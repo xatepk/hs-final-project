@@ -6,6 +6,7 @@ function Address() {
     <div className="footer__body-address">
       <Link to='/' className="footer__logo-link">
         <img src={logo} alt="логотип" className="footer__logo logo" />
+        <span className="footer__logo-text">СДАЁМ БАЙ</span>
       </Link>
       <address className="footer__address">
         <p className="footer__address-desc">ИП Шушкевич Андрей Викторович</p>

@@ -12,7 +12,7 @@ import { newsSlice } from "../store/slices/newsSlice";
 
 function NewsPage() {
   const dispatch = useAppDispatch();
-  const { error, loading, filteredNews } = useAppSelector(state => state.news);
+  const { filteredNews } = useAppSelector(state => state.news);
   const [value, setValue] = useState('');
   const debounced = useDebounce<string>(value, 500)
 
@@ -45,7 +45,6 @@ function NewsPage() {
 
   return (
     <>
-      {error && <p>{error}</p>}
       <Header />
       <div className="news">
         <Breadcrumb title="Новости" link="/news" />
@@ -63,8 +62,6 @@ function NewsPage() {
             <div className="news__search_bg"></div>
           </div>
         </div>
-
-        {loading && <p>Loading...</p>}
 
         {filteredNews.length > 0 &&
 
