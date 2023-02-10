@@ -2,6 +2,8 @@
 Сервис, в котором можно найти квартиры по запросу и сохранить в личном кабинете - дипломный проект стажировки Hawking School.
 
 # Запуск
+- Созданы images на docker hub, можно в основной папке проекта запустить docker-compose up
+Или
 - В папке backend запустить команду npm run start
 - В папке frontend запустить команду npm run start
 
@@ -54,4 +56,5 @@
 - Express JS
 - MongoDB
 - LESS
+- Docker
 
