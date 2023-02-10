@@ -3,7 +3,7 @@
 
 # Запуск
 - Созданы images на docker hub, можно в основной папке проекта запустить docker-compose up
-Или
+<br/> Или
 - В папке backend запустить команду npm run start
 - В папке frontend запустить команду npm run start
 
