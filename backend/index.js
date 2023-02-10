@@ -31,11 +31,6 @@ mongoose.connect(MONGO_URL, {
 app.use('/', newsRoutes);
 app.use('/', apartmentsRouters);
 app.use('/', usersRoutes);
-// app.use(() => {
-//   throw new NotFound('Запрашиваемый ресурс не найден');
-// });
-
-// app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}}`)
