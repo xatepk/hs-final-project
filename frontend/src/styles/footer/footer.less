@@ -1,0 +1,160 @@
+.footer {
+  width: 100%;
+  margin-left: 80px;
+  max-width: 1200px;
+  display: flex;
+  padding-top: 39px;
+  padding-bottom: 53px;
+
+  &__body-address {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__logo-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+
+  &__logo {
+    width: 134px;
+    height: 19px;
+    margin-bottom: 10px;
+  }
+
+  &__logo-text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: #8291A3;
+  }
+
+  &__address {
+    max-width: 260px;
+    font-style: normal;
+    margin-top: 36px;
+  }
+
+  &__address-desc {
+    font-size: 11px;
+    line-height: 13px;
+    color: #8291A3;
+  }
+
+  &__address-desc-link {
+    text-decoration: none;
+    color: #8291A3;
+  }
+
+  &__ads {
+    margin-left: 67px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  &__ads-list {
+    list-style-type: none;
+    padding: 0;
+    height: 93px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+
+  &__ads-link {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8291A3;
+
+    &_bold {
+      font-weight: 700;
+      color: #1E2123;
+    }
+  }
+
+  &__apartments-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__apartments-link {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8291A3;
+  }
+
+  &__information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 38px;
+  }
+
+  &__networks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__networks-title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #1E2123;
+  }
+
+  &__networks-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    margin-left: 24px;
+  }
+
+  &__networks-item {
+    margin-right: 15px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__payment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__payment-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    margin-right: 15px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

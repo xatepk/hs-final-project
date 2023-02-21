@@ -1,0 +1,666 @@
+.apartments {
+  width: 100%;
+
+  &__content {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    width: 100%;
+    padding: 42px 0;
+    background: linear-gradient(90deg, rgba(148, 175, 255, .1) 0%, rgba(78, 100, 249, .1) 94.5%);
+  }
+
+  &__title {
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 25px;
+    color: #1E2123;
+  }
+
+  &__sort {
+    margin-top: 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 84px;
+  }
+
+  &__sort-list {
+    .buton-df ();
+    margin-left: auto;
+    margin-right: 21px;
+    .apartments-button ('../img/icons/apartments/list.svg', 14px);
+
+    &_is-active {
+      .apartments-button ('../img/icons/apartments/list-isactive.svg', 14px);
+      .apartments-bs ();
+    }
+  }
+
+  &__sort-tile {
+    .buton-df ();
+    margin-right: 65px;
+    .apartments-button ('../img/icons/apartments/tile.svg', 14px);
+
+    &_is-active {
+      .apartments-button ('../img/icons/apartments/tile-isactive.svg', 14px);
+      .apartments-bs ();
+    }
+  }
+
+  &__sort-map {
+    text-decoration: none;
+    .apartments-button ('../img/icons/apartments/map.svg', 11px);
+    .apartments-bs ();
+  }
+
+  &__result {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    color: #1E2123;
+    margin-bottom: 40px;
+  }
+
+  &__desc {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    color: #1E2123;
+  }
+
+  &__list {
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(406px, 1fr));
+    gap: 31px;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 0;
+
+    &_list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 406px;
+    background: #FFFEFE;
+    border-radius: 10px;
+
+    &_row {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  &__item-image {
+    width: 100%;
+    height: 226px;
+    border-radius: 10px;
+    object-fit: cover;
+
+    &_list {
+      height: 300px;
+      width: 537px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+  }
+
+  &__info-price {
+    display: flex;
+    flex-wrap: wrap;
+    width: 106px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #664EF9;
+
+    &_list {
+      width: 132px;
+      justify-content: end;
+      font-size: 25px;
+      line-height: 30px;
+    }
+
+    &_grey {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #BDBDBD;
+    }
+  }
+
+  &__info-count {
+    .apartments-fz (8px);
+    margin-left: auto;
+
+    &::before {
+      width: 15px;
+      height: 15px;
+      margin-right: 6px;
+      content: url('../../img/icons/apartments/people.svg');
+    }
+
+    &_list {
+      .apartments-fz (14px);
+      margin-left: 0;
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__info-bedrooms {
+    .apartments-fz (8px);
+    margin-left: 20px;
+
+    &_ml {
+      margin-left: 7px;
+    }
+
+    &_list {
+      .apartments-fz (14px);
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__address {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    margin-bottom: 11px;
+  }
+
+  &__address-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 26px 25px 17px;
+  }
+
+  &__address-location {
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+
+    &_list {
+      display: inline-block;
+      margin-top: 17px;
+    }
+
+    &::before {
+      content: url('../../img/icons/apartments/geo.svg');
+      margin-right: 10px;
+    }
+  }
+
+  &__area {
+    display: flex;
+    margin: 0 20px;
+    margin-bottom: 20px;
+
+    &_list {
+      margin: 0;
+    }
+  }
+
+  &__area-location {
+    margin-right: 30px;
+    margin-left: 0;
+
+    &_purple {
+      color: #664EF9;
+    }
+
+    &_list {
+      margin-right: 15px;
+      margin-left: 0;
+      .apartments-fz (14px);
+    }
+
+    &::before {
+      content: url('../../img/icons/apartments/underground.svg');
+      margin-right: 6px;
+    }
+
+    &:last-of-type {
+      &::before {
+        content: url('../../img/icons/apartments/area.svg');
+      }
+
+      margin-right: 0;
+    }
+  }
+
+  &__item-desc {
+    margin: 0 20px;
+    font-size: 12px;
+    line-height: 150%;
+    color: #686868;
+    letter-spacing: 0.03em;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(78, 100, 249, .1);
+    padding-top: 13px;
+    margin: 0 20px;
+    margin-top: 13px;
+
+    &_list {
+      border: none;
+      padding-top: 0;
+      margin-top: 24px;
+    }
+  }
+
+  &__like {
+    height: 33px;
+    border: none;
+    border-radius: 22px;
+    background-color: rgba(235, 87, 87, 0.1);
+    padding: 9px;
+    display: flex;
+
+    &_list {
+      height: 37px;
+      padding: 9px 15px;
+      margin-right: auto;
+      margin-left: 15px;
+    }
+
+    &_red {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+      color: #EB5757;
+      margin-right: 9px;
+    }
+
+    &::after {
+      width: 15px;
+      height: 15px;
+      content: url('../../img/icons/apartments/like.svg');
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+
+    &_active {
+      &::after {
+        width: 15px;
+        height: 15px;
+        content: url('../../img/icons/apartments/red-heart-icon.svg');
+      }
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    background-color: #F8F8F8;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 15px;
+    position: relative;
+
+    &:hover {
+      background-color: #F5F3FF;
+      cursor: pointer;
+    }
+  }
+
+  &__contacts-desc {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 17px;
+    color: #664EF9;
+
+    &::before {
+      content: url('../../img/icons/apartments/cellphone.svg');
+      margin-right: 10px;
+    }
+  }
+
+  &__more {
+    background-color: rgba(255, 213, 79, 0.1);
+    border: none;
+    border-radius: 17px;
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FEC100;
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+
+  &__info-list {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    margin-left: 25px;
+  }
+
+  &__geo {
+    position: relative;
+    width: 100%;
+    background: url('../../img/icons/apartments/bg-geo.svg') no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+
+    &_bg {
+      background: url('../../img/icons/mainpage/bg_geo.svg') no-repeat center;
+    }
+
+    &_mb {
+      margin-bottom: 359px;
+    }
+  }
+
+  &__geo-desc {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+    margin-top: 75px;
+
+    &_size {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      margin-top: 20px;
+      margin-bottom: 23px;
+      max-width: 319px;
+      text-align: center;
+    }
+  }
+
+  &__geo-button {
+    border: none;
+    background-color: #FFFFFF;
+    border-radius: 19px;
+    padding: 10px 18px;
+    margin-bottom: 87px;
+
+    &_mb {
+      margin-bottom: 217px;
+    }
+
+    &::before {
+      content: url('../../img/icons/apartments/geo-yellow.svg');
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
+  }
+
+  &__geo-advice {
+    position: absolute;
+    top: 317px;
+    left: 82px;
+    display: flex;
+  }
+
+  &__advice {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+
+    &_mb {
+      margin-bottom: 19px;
+    }
+  }
+
+  &__advice-image {
+    border-radius: 50%;
+
+    &_mr {
+      margin-right: 27px;
+    }
+
+    &_rm {
+      margin-right: 36px;
+    }
+  }
+
+  &__advice-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #664EF9;
+
+    &_bl {
+      font-size: 30px;
+      line-height: 36px;
+      color: #333333;
+      margin-left: 40px;
+      margin-bottom: 36px;
+    }
+  }
+
+  &__advice-desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 17px;
+    color: #1E2123;
+    margin-bottom: 34px;
+
+    &_fs {
+      margin-bottom: 14px;
+      color: #242424;
+
+      &:last-of-type {
+        margin-bottom: 37px;
+      }
+    }
+
+    &_weight-600 {
+      font-weight: 600;
+    }
+
+    &_weight-700 {
+      font-weight: 700;
+    }
+  }
+
+  &__advice-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 10px 18px;
+    background: linear-gradient(106.06deg, #FFD54F 1.12%, #FEC100 97.96%);
+    box-shadow: 0px 15px 40px rgba(254, 193, 0, 0.15);
+    border-radius: 17px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #242424;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      opacity: .8;
+    }
+
+    &_after {
+      &:after {
+        width: 20px;
+        height: 20px;
+        content: url('../../img/icons/mainpage/str.svg');
+        margin-left: 5px;
+      }
+    }
+
+    &_color {
+      color: #FFFFFF;
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(270deg, #7E6AF3 0%, #6540CD 100%);
+
+      &:after {
+        width: 20px;
+        height: 20px;
+        content: url('../../img/icons/mainpage/str2.svg');
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &__advices-list {
+    width: 100%;
+    max-width: 406px;
+    margin-right: 30px;
+    background-color: #FFFEFE;
+    box-shadow: 0px 20px 40px rgba(135, 124, 202, 0.15);
+    border-radius: 10px;
+    padding: 27px 37px 55px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &_bg {
+      background: linear-gradient(105.54deg, #FFD54F 33.53%, #FEC100 94.13%);
+      background-image: url('../../img/icons/mainpage/gold.svg');
+      background-size: cover;
+      padding-top: 40px;
+    }
+  }
+
+  &__gold {
+    display: flex;
+    background: linear-gradient(106.06deg, #FFD54F 1.12%, #FEC100 97.96%);
+    border-radius: 0px 10px 10px 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-shadow: 0px 1px 0px rgba(147, 79, 0, 0.3);
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    margin: 0;
+  }
+
+  &__footer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.recommended {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  &__title {
+    margin-bottom: 25px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #1E2123;
+  }
+
+  &__list {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    list-style: none;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    background: rgba(102, 78, 249, 0.1);
+    border-radius: 17px;
+    border: none;
+    padding: 6px 10px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #664EF9;
+  }
+
+  &__button-reset {
+    margin-left: 10px;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.carousel-control-prev-icon {
+  background-image: url('../../img/icons/prev-icon.svg');
+}
+
+.carousel-control-next-icon {
+  background-image: url('../../img/icons/next-icon.svg');
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 29px;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.carousel-item {
+  position: relative;
+}

@@ -1,0 +1,101 @@
+.header {
+  margin: 0 auto;
+  width: 100%;
+
+  &__nav {
+    width: 100%;
+    background-color: #F8F8F8;
+  }
+
+  &__list {
+    margin: auto;
+    max-width: 1280px;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  &__items {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    width: 100%;
+
+    &>li.header__item:last-of-type {
+      margin-right: 40px;
+      margin-left: auto;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__item {
+    margin-right: 57px;
+    display: flex;
+    align-items: center;
+
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+
+  &__item-link {
+    display: flex;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8291A3;
+    text-decoration: none;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    border-bottom: 3px solid transparent;
+
+    &_apa {
+      &::after {
+        content: url('../../img/icons/header/loc_ye.svg');
+        margin-left: 15px;
+        width: 12px;
+        height: 15px;
+      }
+    }
+
+    &_active {
+      border-bottom: 3px solid #FFD54F;
+      color: #1E2123;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+      color: #8291A3;
+    }
+
+    &_after {
+      &::after {
+        content: url('../../img/icons/header/heart.svg');
+        margin-left: 11px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &_before {
+      &::before {
+        content: url('../../img/icons/header/loc.svg');
+        margin-right: 5px;
+        width: 8px;
+        height: 10px;
+      }
+    }
+
+    &_purple {
+      color: #664EF9;
+      padding-bottom: 11px;
+    }
+  }
+
+}
